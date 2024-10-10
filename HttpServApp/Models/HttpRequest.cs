@@ -25,7 +25,7 @@ namespace HttpServApp.Models
         public string? ContentType { get; }
         public string? Method { get; }
         public int? ContentLength { get; }
-        public DateTime DateRequest { get; } = DateTime.Now;
+        public DateTime DateRequest { get; } = DateTime.UtcNow;
         public string? Body { get; }
         public StatusEnum Status { get; set; } = 0;
         public string? StatusStr { get => Status.ToString(); }

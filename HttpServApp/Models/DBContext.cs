@@ -9,11 +9,11 @@ namespace HttpServApp.Models
 {
     internal class DBContext : IDbContext
     {
-        private readonly string сonnStr = Configuration.DBConnStr;
-        private readonly NpgsqlConnection connection = new NpgsqlConnection();
+        public string сonnStr { get;  } = Configuration.DBConnStr;
         public List<HttpRequest> Requests { get; } = new List<HttpRequest>();
 
-        public DBContext() { }
+        private readonly NpgsqlConnection connection = new NpgsqlConnection();
+        public DBContext() {  }
 
         public DBContext (string connStr)
         {
@@ -119,11 +119,11 @@ namespace HttpServApp.Models
                         cmd.Parameters.Add(new NpgsqlParameter() { Value = httpRequest.Version == null ? DBNull.Value : httpRequest.Version });
                         cmd.Parameters.Add(new NpgsqlParameter() { Value = httpRequest.ContentType == null ? DBNull.Value : httpRequest.ContentType });
                         cmd.Parameters.Add(new NpgsqlParameter() { Value = httpRequest.Method == null ? DBNull.Value : httpRequest.Method });
-                        cmd.Parameters.Add(new NpgsqlParameter() { DbType = System.Data.DbType.Date, Value = httpRequest.DateRequest });
+                        cmd.Parameters.Add(new NpgsqlParameter() { DbType = System.Data.DbType.DateTimeOffset, Value = httpRequest.DateRequest });
                         cmd.Parameters.Add(new NpgsqlParameter() { Value = httpRequest.Body == null ? DBNull.Value : httpRequest.Body });
                         cmd.Parameters.Add(new NpgsqlParameter() { DbType = System.Data.DbType.Int32, Value = httpRequest.ContentLength == null ? DBNull.Value : httpRequest.ContentLength });
                         cmd.Parameters.Add(new NpgsqlParameter() { Value = (int)httpRequest.Status });
-                        cmd.Parameters.Add(new NpgsqlParameter() { DbType = System.Data.DbType.Date, Value = httpRequest.DateResponse });
+                        cmd.Parameters.Add(new NpgsqlParameter() { DbType = System.Data.DbType.DateTimeOffset, Value = httpRequest.DateResponse });
                         break;
 
                     case '-':
@@ -137,7 +137,7 @@ namespace HttpServApp.Models
 	                            @" SET ""Status""= $1, ""Date_Response""= $2" +
 	                            @" WHERE ""Id_Request""= $3";
                         cmd.Parameters.Add(new NpgsqlParameter() { Value = (int)httpRequest.Status });
-                        cmd.Parameters.Add(new NpgsqlParameter() { DbType = System.Data.DbType.Date, Value = httpRequest.DateResponse });
+                        cmd.Parameters.Add(new NpgsqlParameter() { DbType = System.Data.DbType.DateTimeOffset, Value = httpRequest.DateResponse });
                         cmd.Parameters.Add(new NpgsqlParameter() { DbType = System.Data.DbType.Int64, Value = httpRequest.IdRequest });
                         break;
 
@@ -148,6 +148,16 @@ namespace HttpServApp.Models
                     return;
                 cmd.CommandText = query;
                 cmd.ExecuteNonQuery();
+
+                // Отримання ідентифікатора з бази даних для нового об'єкта
+                if (typeOper == '+')
+                {
+                    cmd.CommandText = @"SELECT currval('""Http_Request_Seq_Id""')  as id";
+                    cmd.Parameters.Clear();
+                    long newIdRequest = Convert.ToInt64(cmd.ExecuteScalar());
+                    httpRequest.IdRequest = newIdRequest;
+
+                }
             }
             catch (Exception ex)
             {

@@ -8,6 +8,8 @@ namespace HttpServApp.Models
 {
     interface IDbContext
     {
+        string сonnStr { get; }
+        List<HttpRequest> Requests { get; }
         public void AddRequest(HttpRequest request);
 
         public void RemoveRequest(HttpRequest request);
