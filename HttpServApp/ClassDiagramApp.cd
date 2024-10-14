@@ -1,61 +1,68 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="HttpServApp.Models.Configuration">
-    <Position X="7.25" Y="0.5" Width="1.5" />
+    <Position X="1.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAABAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAABAA=</HashCode>
       <FileName>Models\Configuration.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="HttpServApp.Models.DBContext">
-    <Position X="10" Y="2.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>gAABAAAEAAAgACAAAAABAAAAAAAAAAAAAAACEBAAAAI=</HashCode>
-      <FileName>Models\DBContext.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Orientation="Left" Position="0.1" />
-  </Class>
   <Class Name="HttpServApp.Models.HttpRequest">
-    <Position X="2.5" Y="0.75" Width="1.5" />
+    <Position X="4.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>IAAAAAAEAAIAAAIABAAhgAAAAAEAABAAAAAQCAAAAAA=</HashCode>
+      <HashCode>IAAAAAAEAABAAAAAAACggAAAAAAAAAAQAAAASABAAAA=</HashCode>
       <FileName>Models\HttpRequest.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="HttpServApp.Models.HttpRequestError">
-    <Position X="5" Y="2.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\HttpRequestError.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="HttpServApp.Models.HttpRequestPage">
-    <Position X="5" Y="0.5" Width="1.5" />
+    <Position X="7.75" Y="6.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAAAFAAAAAAAABAAAA=</HashCode>
       <FileName>Models\HttpRequestPage.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HttpServApp.Models.Validator">
-    <Position X="5" Y="4.5" Width="1.5" />
+    <Position X="4.5" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Validator.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Interface Name="HttpServApp.Models.IDbContext">
-    <Position X="7.25" Y="2.5" Width="1.5" />
+  <Class Name="HttpServApp.Models.Repository">
+    <Position X="1.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>gAABAAAEAAAgAAAAAAAAAAAAAAAAAAAAAAACEAAAAAI=</HashCode>
-      <FileName>Models\IDbContext.cs</FileName>
+      <HashCode>gAABAAAEAAAgAAAAAAABAAAAAAAAAAAAAACCEBAAAAI=</HashCode>
+      <FileName>Models\Repository.cs</FileName>
     </TypeIdentifier>
-  </Interface>
-  <Enum Name="HttpServApp.Models.StatusEnum">
-    <Position X="2.5" Y="4.75" Width="1.5" />
+    <Lollipop Orientation="Right" Position="1.308" />
+  </Class>
+  <Class Name="HttpServApp.Models.Listener">
+    <Position X="4.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAIAAAAAgAAAAAAAAAAAAAACAAAAAABAAAACCA=</HashCode>
-      <FileName>Models\HttpRequest.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Listener.cs</FileName>
     </TypeIdentifier>
-  </Enum>
+  </Class>
+  <Class Name="HttpServApp.Models.HttpRequestStat">
+    <Position X="7.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAiAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Models\HttpRequestStat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HttpServApp.Models.HttpResponse">
+    <Position X="4.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAQAAAAAAAAAAAAABAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Models\HttpResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HttpServApp.Models.TagTemplate">
+    <Position X="10" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAQAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Models\TagTemplate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

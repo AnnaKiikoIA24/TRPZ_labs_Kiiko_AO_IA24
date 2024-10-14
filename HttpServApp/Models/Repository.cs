@@ -1,23 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Npgsql;
 
 namespace HttpServApp.Models
 {
-    internal class DBContext : IDbContext
+    internal class Repository : IRepository
     {
-        public string сonnStr { get;  } = Configuration.DBConnStr;
+        public string ConnStr { get;  } = Configuration.DBConnStr;
         public List<HttpRequest> Requests { get; } = new List<HttpRequest>();
 
         private readonly NpgsqlConnection connection = new NpgsqlConnection();
-        public DBContext() {  }
+        public Repository() {  }
 
-        public DBContext (string connStr)
+        public Repository (string connStr)
         {
-            this.сonnStr = connStr;
+            this.ConnStr = connStr;
         }
 
         public void AddRequest (HttpRequest request)
@@ -38,7 +39,6 @@ namespace HttpServApp.Models
             if (existRequest == null)
                 throw new Exception("Updatable object not found in collection");
             existRequest.Status = request.Status;
-            existRequest.DateResponse = request.DateResponse;
         }
 
         public HttpRequest? GetRequestById (long idRequest)
@@ -48,7 +48,7 @@ namespace HttpServApp.Models
 
         public List<HttpRequest> GetRequestsByPeriod(DateTime dateBeg, DateTime dateEnd)
         {
-            return Requests.FindAll(r => r.DateRequest >= dateBeg && r.DateRequest <= dateEnd);
+            return Requests.FindAll(r => r.DateTimeRequest >= dateBeg && r.DateTimeRequest <= dateEnd);
         }
 
         // Завантаження із БД, формування колекції Requests
@@ -56,12 +56,11 @@ namespace HttpServApp.Models
         {
             try
             {
-                connection.ConnectionString = сonnStr;
+                connection.ConnectionString = ConnStr;
                 connection.Open();
                 NpgsqlCommand cmd = connection.CreateCommand();
                 cmd.CommandType = System.Data.CommandType.Text;
-                cmd.CommandText = @"SELECT ""Id_Request"", ""Path"", ""Version"", ""Content_Type"", ""Method"", ""Date_Request"", ""Body"", ""Content_Length"", " +
-                            @"""Status"", ""Date_Response""" +
+                cmd.CommandText = @"SELECT ""Id_Request"", ""DateTime_Request"", ""Version"", ""Method"", ""Ip_Address"", ""Status"", ""Content_Type_Request""" +
 	                        @" FROM public.""Http_Request""";
                 NpgsqlDataReader dataReader = cmd.ExecuteReader();
                 if (dataReader.HasRows)
@@ -69,17 +68,14 @@ namespace HttpServApp.Models
                     while (dataReader.Read())
                     {
                         HttpRequest request = new HttpRequest(
-                            dataReader["Path"] != DBNull.Value ? Convert.ToString(dataReader["Path"]) : null,
+                            Convert.ToDateTime(dataReader["DateTime_Request"]),
                             dataReader["Version"] != DBNull.Value ? Convert.ToString(dataReader["Version"]) : null,
-                            dataReader["Content_Type"] != DBNull.Value ? Convert.ToString(dataReader["Content_Type"]) : null,
                             dataReader["Method"] != DBNull.Value ? Convert.ToString(dataReader["Method"]) : null,
-                            dataReader["Content_Length"] != DBNull.Value ? Convert.ToInt32(dataReader["Content_Length"]) : null,
-                            Convert.ToDateTime(dataReader["Date_Request"]),
-                            dataReader["Body"] != DBNull.Value ? Convert.ToString(dataReader["Body"]) : null,
+                            Convert.ToString(dataReader["Ip_Address"]),
+                            dataReader["Content_Type_Request"] != DBNull.Value ? Convert.ToString(dataReader["Content_Type_Request"]) : null,
                             Convert.ToInt64(dataReader["Id_Request"]))
                         {
-                            Status = (StatusEnum)Convert.ToInt32(dataReader["Status"]),
-                            DateResponse = Convert.ToDateTime(dataReader["Date_Response"])
+                            Status = (StatusEnum)Convert.ToInt32(dataReader["Status"])
                         };
                         AddRequest(request);
 
@@ -103,7 +99,7 @@ namespace HttpServApp.Models
         {
             try
             {
-                connection.ConnectionString = сonnStr;
+                connection.ConnectionString = ConnStr;
                 connection.Open();
                 NpgsqlCommand cmd = connection.CreateCommand();
                 cmd.CommandType = System.Data.CommandType.Text;
@@ -112,18 +108,14 @@ namespace HttpServApp.Models
                 {
                     case '+':
                         query = @"INSERT INTO public.""Http_Request""(" +
-	                        @"""Path"", ""Version"", ""Content_Type"", ""Method""," +
-                            @"""Date_Request"", ""Body"", ""Content_Length"", ""Status"", ""Date_Response"")" +
-                            @" VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)";
-                        cmd.Parameters.Add(new NpgsqlParameter() { Value = httpRequest.Path == null ? DBNull.Value : httpRequest.Path });
-                        cmd.Parameters.Add(new NpgsqlParameter() { Value = httpRequest.Version == null ? DBNull.Value : httpRequest.Version });
-                        cmd.Parameters.Add(new NpgsqlParameter() { Value = httpRequest.ContentType == null ? DBNull.Value : httpRequest.ContentType });
-                        cmd.Parameters.Add(new NpgsqlParameter() { Value = httpRequest.Method == null ? DBNull.Value : httpRequest.Method });
-                        cmd.Parameters.Add(new NpgsqlParameter() { DbType = System.Data.DbType.DateTimeOffset, Value = httpRequest.DateRequest });
-                        cmd.Parameters.Add(new NpgsqlParameter() { Value = httpRequest.Body == null ? DBNull.Value : httpRequest.Body });
-                        cmd.Parameters.Add(new NpgsqlParameter() { DbType = System.Data.DbType.Int32, Value = httpRequest.ContentLength == null ? DBNull.Value : httpRequest.ContentLength });
-                        cmd.Parameters.Add(new NpgsqlParameter() { Value = (int)httpRequest.Status });
-                        cmd.Parameters.Add(new NpgsqlParameter() { DbType = System.Data.DbType.DateTimeOffset, Value = httpRequest.DateResponse });
+                            @"""DateTime_Request"", ""Version"", ""Method"", ""Ip_Address"", ""Status"", ""Content_Type_Request"")" +
+                            @" VALUES ($1, $2, $3, $4, $5, $6)";
+                        cmd.Parameters.Add(new NpgsqlParameter() { DbType = System.Data.DbType.DateTimeOffset, Value = httpRequest.DateTimeRequest });
+                        cmd.Parameters.Add(new NpgsqlParameter() { DbType = System.Data.DbType.String, Value = httpRequest.Version == null ? DBNull.Value : httpRequest.Version });
+                        cmd.Parameters.Add(new NpgsqlParameter() { DbType = System.Data.DbType.String, Value = httpRequest.Method == null ? DBNull.Value : httpRequest.Method });
+                        cmd.Parameters.Add(new NpgsqlParameter() { DbType = System.Data.DbType.String, Value = httpRequest.IpAddress });
+                        cmd.Parameters.Add(new NpgsqlParameter() { DbType = System.Data.DbType.Int32, Value = (int)httpRequest.Status });
+                        cmd.Parameters.Add(new NpgsqlParameter() { DbType = System.Data.DbType.String, Value = httpRequest.ContentTypeRequest == null ? DBNull.Value : httpRequest.ContentTypeRequest });
                         break;
 
                     case '-':
@@ -134,10 +126,9 @@ namespace HttpServApp.Models
 
                     case '=':
                         query = @"UPDATE public.""Http_Request""" +
-	                            @" SET ""Status""= $1, ""Date_Response""= $2" +
-	                            @" WHERE ""Id_Request""= $3";
-                        cmd.Parameters.Add(new NpgsqlParameter() { Value = (int)httpRequest.Status });
-                        cmd.Parameters.Add(new NpgsqlParameter() { DbType = System.Data.DbType.DateTimeOffset, Value = httpRequest.DateResponse });
+	                            @" SET ""Status""= $1" +
+	                            @" WHERE ""Id_Request""= $2";
+                        cmd.Parameters.Add(new NpgsqlParameter() { DbType = System.Data.DbType.Int32, Value = (int)httpRequest.Status });
                         cmd.Parameters.Add(new NpgsqlParameter() { DbType = System.Data.DbType.Int64, Value = httpRequest.IdRequest });
                         break;
 
