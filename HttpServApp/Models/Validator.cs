@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace HttpServApp.Models
 {
     /// <summary>
-    /// Статичний клас для парсингу строки запиту в об'єкт HttpRequest (в один із його нащадків)
+    /// Статичний клас для парсингу рядку запиту в об'єкт HttpRequest (в один із його нащадків)
     /// </summary>
     internal static class Validator
     {

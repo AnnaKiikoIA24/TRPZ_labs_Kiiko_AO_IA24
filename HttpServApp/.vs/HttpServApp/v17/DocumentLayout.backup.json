@@ -3,10 +3,6 @@
   "WorkspaceRootPath": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|d:\\git_repos\\trpz_labs_kiiko_ao_ia24\\httpservapp\\models\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|solutionrelative:models\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|d:\\git_repos\\trpz_labs_kiiko_ao_ia24\\httpservapp\\classdiagramapp.cd||{59B0B277-7DDF-4E36-A3ED-02DAC5B9E2FA}|",
       "RelativeMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|solutionrelative:classdiagramapp.cd||{59B0B277-7DDF-4E36-A3ED-02DAC5B9E2FA}|"
     }
@@ -23,26 +19,13 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Repository.cs",
-              "DocumentMoniker": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\Models\\Repository.cs",
-              "RelativeDocumentMoniker": "Models\\Repository.cs",
-              "ToolTip": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\Models\\Repository.cs",
-              "RelativeToolTip": "Models\\Repository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-13T17:42:18.631Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "ClassDiagramApp.cd",
               "DocumentMoniker": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\ClassDiagramApp.cd",
               "RelativeDocumentMoniker": "ClassDiagramApp.cd",
               "ToolTip": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\ClassDiagramApp.cd",
               "RelativeToolTip": "ClassDiagramApp.cd",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000463|",
-              "WhenOpened": "2024-10-10T22:18:51.433Z",
+              "WhenOpened": "2024-10-17T18:36:56.764Z",
               "EditorCaption": ""
             }
           ]
