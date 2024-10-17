@@ -20,36 +20,29 @@ namespace HttpServApp.Models
     internal class HttpRequest
     {
         public long IdRequest { get; set; }
-        public string? Path { get; }
+        public DateTime DateTimeRequest { get; } = DateTime.UtcNow;
         public string? Version { get; }
-        public string? ContentType { get; }
         public string? Method { get; }
-        public int? ContentLength { get; }
-        public DateTime DateRequest { get; } = DateTime.UtcNow;
-        public string? Body { get; }
-        public StatusEnum Status { get; set; } = 0;
+        public string IpAddress { get; } = string.Empty;
+        public StatusEnum Status { get; set; } = StatusEnum.PROCESSING; // Початково статус запиту ініціалізується значенням PROCESSING
         public string? StatusStr { get => Status.ToString(); }
-        public DateTime DateResponse { get; set;  }
+        public string? ContentTypeRequest { get; }
+        public HttpResponse? Response { get; set; }
 
         public HttpRequest() { }
 
-        public HttpRequest(string? path, string? version, string? contentType, string? method, int? contentLenght, DateTime dateRequest, string? body, long idRequest =-1)
+        public HttpRequest(DateTime dateTimeRequest, string? version, string? method, string ipAddress, string? contentType, long idRequest =-1)
         {
-            Path = path;
+            DateTimeRequest = dateTimeRequest;
             Version = version;
-            ContentType = contentType;
             Method = method;
-            ContentLength = contentLenght;
-            DateRequest = dateRequest;
-            Body = body;
+            IpAddress = ipAddress;
+            ContentTypeRequest = contentType;
             IdRequest = idRequest;
         }
 
         // Віртуальний метод, реалізація логики у класах-нащадках
-        public virtual string CreateResponseStr ()
-        {
-            return string.Empty;
-        }
+        public virtual void CreateResponse () { }
 
      }
 }

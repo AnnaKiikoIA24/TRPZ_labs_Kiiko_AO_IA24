@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace HttpServApp.Models
 {
-    interface IDbContext
+    interface IRepository
     {
-        string сonnStr { get; }
+        string ConnStr { get; }
         List<HttpRequest> Requests { get; }
         public void AddRequest(HttpRequest request);
 

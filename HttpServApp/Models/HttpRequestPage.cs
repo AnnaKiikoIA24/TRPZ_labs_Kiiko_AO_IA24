@@ -11,22 +11,18 @@ namespace HttpServApp.Models
     /// </summary>
     internal class HttpRequestPage: HttpRequest
     {
-        public HttpRequestPage()
+        public string Path { get; } = string.Empty;
+        public int ContentLength { get; }
+        public List<TagTemplate> Tags { get; } = new List<TagTemplate>();
+        public HttpRequestPage() { }
+
+        public HttpRequestPage(DateTime dateTimeRequest, string version, string method, string ipAddress, string contentType, string path, int contentLength, long idRequest = -1)
+            : base(dateTimeRequest, version, method, ipAddress, contentType, idRequest)
         {
-            // Для помилковго запиту одразу встановлюємо статус BAD_REQUEST
-            Status = StatusEnum.BAD_REQUEST;
+            Path = path;
+            ContentLength = contentLength;
         }
 
-        public HttpRequestPage(string path, string version, string contentType, string method, int contentLenght, DateTime dateRequest, string? body)
-            : base(path, version, contentType, method, contentLenght, dateRequest, body)
-        {  }
-
-        public override string CreateResponseStr()
-        {
-            DateResponse = DateTime.Now;
-            // Тут буде логіка формування відповіді
-            // Для доступу до сторінок будемо використовувати статичний клас Configuration
-            return string.Empty;
-        }
+        public override void CreateResponse() { }
     }
 }

@@ -1,34 +1,32 @@
 ﻿using HttpServApp.Models;
 
-IDbContext dBContext = new DBContext();
+IRepository dbRepository = new Repository();
 // Завантажити з бази даних
-dBContext.LoadFromDb();
-Console.WriteLine($"get {dBContext.Requests.Count} rows");
+dbRepository.LoadFromDb();
+Console.WriteLine($"get {dbRepository.Requests.Count} rows");
 
 // Записати новий об'єкт в базу даних
-//HttpRequest newHttpRequest = new HttpRequest("123456j", "1.1", "", "", 11, DateTime.UtcNow, "")
+//HttpRequest newHttpRequest = new HttpRequest(DateTime.UtcNow, "1.1", "get", "127.0.0.1", "html")
 //{
 //    Status = StatusEnum.OK,
-//    DateResponse = DateTime.UtcNow
 //};
-//dBContext.Requests.Add(newHttpRequest);
-//dBContext.SaveToDB(newHttpRequest, '+');
+//dbRepository.Requests.Add(newHttpRequest);
+//dbRepository.SaveToDB(newHttpRequest, '+');
 //Console.WriteLine("new row was added successfully");
 
 // Оновити об'єкт у базі даних
-//if (dBContext.Requests.Count > 0)
+//if (dbRepository.Requests.Count > 0)
 //{
-//    HttpRequest updHttpRequest = dBContext.Requests[0];
+//    HttpRequest updHttpRequest = dbRepository.Requests[0];
 //    updHttpRequest.Status = StatusEnum.NOT_FOUND;
-//    updHttpRequest.DateResponse = DateTime.UtcNow;
-//    dBContext.SaveToDB(updHttpRequest, '=');
+//    dbRepository.SaveToDB(updHttpRequest, '=');
 //    Console.WriteLine($"row with Id_Request = {updHttpRequest.IdRequest} was updated successfully");
 //}
 
 // Видалити об'єкт з бази даних
-//if (dBContext.Requests.Count > 0)
+//if (dbRepository.Requests.Count > 0)
 //{
-//    HttpRequest delHttpRequest = dBContext.Requests[0];
-//    dBContext.SaveToDB(delHttpRequest, '-');
+//    HttpRequest delHttpRequest = dbRepository.Requests[0];
+//    dbRepository.SaveToDB(delHttpRequest, '-');
 //    Console.WriteLine($"row with Id_Request = {delHttpRequest.IdRequest} was deleted successfully");
 //}
