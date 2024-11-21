@@ -1,32 +1,27 @@
-﻿using HttpServApp.Models;
+﻿using HttpServApp;
+using System.ServiceProcess;
 
-IRepository dbRepository = new Repository();
-// Завантажити з бази даних
-dbRepository.LoadFromDb();
-Console.WriteLine($"get {dbRepository.Requests.Count} rows");
+// Якщо запуск в режимі служби
+if (!args.Contains("run=1"))
+{
+    ServiceHttp serviceHttp = new ServiceHttp();
+    ServiceBase.Run(serviceHttp);
 
-// Записати новий об'єкт в базу даних
-//HttpRequest newHttpRequest = new HttpRequest(DateTime.UtcNow, "1.1", "get", "127.0.0.1", "html")
-//{
-//    Status = StatusEnum.OK,
-//};
-//dbRepository.Requests.Add(newHttpRequest);
-//dbRepository.SaveToDB(newHttpRequest, '+');
-//Console.WriteLine("new row was added successfully");
+}
+// Якщо запуск в режимі консольного застосунку (для відладки)
+else
+{
+    ServiceHttp conRun = new ServiceHttp();
+    conRun.StartAsProgram(args);
 
-// Оновити об'єкт у базі даних
-//if (dbRepository.Requests.Count > 0)
-//{
-//    HttpRequest updHttpRequest = dbRepository.Requests[0];
-//    updHttpRequest.Status = StatusEnum.NOT_FOUND;
-//    dbRepository.SaveToDB(updHttpRequest, '=');
-//    Console.WriteLine($"row with Id_Request = {updHttpRequest.IdRequest} was updated successfully");
-//}
+    Console.WriteLine("Натисніть клавишу Esc для виходу ...");
+    Thread.Sleep(500);
+    while (Console.ReadKey().Key != ConsoleKey.Escape)
+    {
+        ;
+    }
 
-// Видалити об'єкт з бази даних
-//if (dbRepository.Requests.Count > 0)
-//{
-//    HttpRequest delHttpRequest = dbRepository.Requests[0];
-//    dbRepository.SaveToDB(delHttpRequest, '-');
-//    Console.WriteLine($"row with Id_Request = {delHttpRequest.IdRequest} was deleted successfully");
-//}
+    conRun.StopAsProgram();
+    Thread.Sleep(3000);
+    Environment.Exit(0);
+}
