@@ -8,18 +8,17 @@ namespace HttpServApp.Models
 {
     internal class HttpResponse
     {
-        public long IdRequest { get; }
         public DateTime DateTimeResponse { get; }
-        public int StatusSend { get; }
+        // Початкове значення = 0: відповідь не відправлена
+        public int StatusSend { get; set; } = 0;
         public string ContentTypeResponse { get; } = string.Empty;
         public HttpResponse() { }
 
-        public HttpResponse(long idRequest, DateTime dateTimeResponse, int statusSend, string contentTypeResponse)
+        public HttpResponse(DateTime dateTimeResponse, string contentTypeResponse)
         {
-            IdRequest = idRequest;
             DateTimeResponse = dateTimeResponse;
-            StatusSend = statusSend;
             ContentTypeResponse = contentTypeResponse;
         }
+
     }
 }

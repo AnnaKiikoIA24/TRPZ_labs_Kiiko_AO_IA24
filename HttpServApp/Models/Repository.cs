@@ -67,7 +67,7 @@ namespace HttpServApp.Models
                 {
                     while (dataReader.Read())
                     {
-                        HttpRequest request = new HttpRequest(
+                        HttpRequest request = new HttpRequest(this,
                             Convert.ToDateTime(dataReader["DateTime_Request"]),
                             dataReader["Version"] != DBNull.Value ? Convert.ToString(dataReader["Version"]) : null,
                             dataReader["Method"] != DBNull.Value ? Convert.ToString(dataReader["Method"]) : null,
