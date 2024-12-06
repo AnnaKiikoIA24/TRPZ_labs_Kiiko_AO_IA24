@@ -1,27 +1,29 @@
 ﻿using HttpServApp;
 using System.ServiceProcess;
 
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
 // Якщо запуск в режимі служби
 if (!args.Contains("run=1"))
 {
-    ServiceHttp serviceHttp = new ServiceHttp();
-    ServiceBase.Run(serviceHttp);
+  ServiceHttp serviceHttp = new ServiceHttp();
+  ServiceBase.Run(serviceHttp);
 
 }
 // Якщо запуск в режимі консольного застосунку (для відладки)
 else
 {
-    ServiceHttp conRun = new ServiceHttp();
-    conRun.StartAsProgram(args);
+  ServiceHttp conRun = new ServiceHttp();
+  conRun.StartAsProgram(args);
 
-    Console.WriteLine("Натисніть клавишу Esc для виходу ...");
+  Console.WriteLine("Натиснiть клавишу Esc для виходу ...");
+
+  while (Console.ReadKey().Key != ConsoleKey.Escape)
+  {
     Thread.Sleep(500);
-    while (Console.ReadKey().Key != ConsoleKey.Escape)
-    {
-        ;
-    }
+  }
 
-    conRun.StopAsProgram();
-    Thread.Sleep(3000);
-    Environment.Exit(0);
+  conRun.StopAsProgram();
+  Thread.Sleep(3000);
+  Environment.Exit(0);
 }
