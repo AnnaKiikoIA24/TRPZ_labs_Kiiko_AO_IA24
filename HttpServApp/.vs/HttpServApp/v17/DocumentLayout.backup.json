@@ -1,10 +1,62 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\",
+  "WorkspaceRootPath": "C:\\\u0410\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\TPRZ\\HttpServApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|d:\\git_repos\\trpz_labs_kiiko_ao_ia24\\httpservapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|c:\\\u0430\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\tprz\\httpservapp\\state\\validatepagestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|solutionrelative:state\\validatepagestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|c:\\\u0430\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\tprz\\httpservapp\\builder\\builderpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|solutionrelative:builder\\builderpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|c:\\\u0430\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\tprz\\httpservapp\\builder\\builderstat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|solutionrelative:builder\\builderstat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|c:\\\u0430\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\tprz\\httpservapp\\builder\\ibuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|solutionrelative:builder\\ibuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|c:\\\u0430\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\tprz\\httpservapp\\state\\invalidstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|solutionrelative:state\\invalidstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|c:\\\u0430\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\tprz\\httpservapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|c:\\\u0430\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\tprz\\httpservapp\\listener.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|solutionrelative:listener.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|c:\\\u0430\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\tprz\\httpservapp\\state\\validatestatisticstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|solutionrelative:state\\validatestatisticstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|c:\\\u0430\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\tprz\\httpservapp\\state\\istate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|solutionrelative:state\\istate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|c:\\\u0430\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\tprz\\httpservapp\\state\\donestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|solutionrelative:state\\donestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|c:\\\u0430\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\tprz\\httpservapp\\processing\\threadprocessing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|solutionrelative:processing\\threadprocessing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|c:\\\u0430\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\tprz\\httpservapp\\models\\httprequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|solutionrelative:models\\httprequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|c:\\\u0430\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\tprz\\httpservapp\\models\\configuration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|solutionrelative:models\\configuration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|c:\\\u0430\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\tprz\\httpservapp\\builder\\builderinvalid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|solutionrelative:builder\\builderinvalid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,21 +66,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 12,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-21T21:47:26.373Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
@@ -36,6 +75,188 @@
             {
               "$type": "Bookmark",
               "Name": "ST:132:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\\u0410\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\TPRZ\\HttpServApp\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\\u0410\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\TPRZ\\HttpServApp\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T23:49:45.292Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Listener.cs",
+              "DocumentMoniker": "C:\\\u0410\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\TPRZ\\HttpServApp\\Listener.cs",
+              "RelativeDocumentMoniker": "Listener.cs",
+              "ToolTip": "C:\\\u0410\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\TPRZ\\HttpServApp\\Listener.cs",
+              "RelativeToolTip": "Listener.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEwAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T23:49:33.483Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IState.cs",
+              "DocumentMoniker": "C:\\\u0410\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\TPRZ\\HttpServApp\\State\\IState.cs",
+              "RelativeDocumentMoniker": "State\\IState.cs",
+              "ToolTip": "C:\\\u0410\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\TPRZ\\HttpServApp\\State\\IState.cs",
+              "RelativeToolTip": "State\\IState.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T23:49:04.725Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "InvalidState.cs",
+              "DocumentMoniker": "C:\\\u0410\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\TPRZ\\HttpServApp\\State\\InvalidState.cs",
+              "RelativeDocumentMoniker": "State\\InvalidState.cs",
+              "ToolTip": "C:\\\u0410\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\TPRZ\\HttpServApp\\State\\InvalidState.cs",
+              "RelativeToolTip": "State\\InvalidState.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T23:48:58.1Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "DoneState.cs",
+              "DocumentMoniker": "C:\\\u0410\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\TPRZ\\HttpServApp\\State\\DoneState.cs",
+              "RelativeDocumentMoniker": "State\\DoneState.cs",
+              "ToolTip": "C:\\\u0410\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\TPRZ\\HttpServApp\\State\\DoneState.cs",
+              "RelativeToolTip": "State\\DoneState.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T23:48:51.049Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ThreadProcessing.cs",
+              "DocumentMoniker": "C:\\\u0410\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\TPRZ\\HttpServApp\\Processing\\ThreadProcessing.cs",
+              "RelativeDocumentMoniker": "Processing\\ThreadProcessing.cs",
+              "ToolTip": "C:\\\u0410\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\TPRZ\\HttpServApp\\Processing\\ThreadProcessing.cs",
+              "RelativeToolTip": "Processing\\ThreadProcessing.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFEAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T23:48:40.676Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "HttpRequest.cs",
+              "DocumentMoniker": "C:\\\u0410\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\TPRZ\\HttpServApp\\Models\\HttpRequest.cs",
+              "RelativeDocumentMoniker": "Models\\HttpRequest.cs",
+              "ToolTip": "C:\\\u0410\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\TPRZ\\HttpServApp\\Models\\HttpRequest.cs",
+              "RelativeToolTip": "Models\\HttpRequest.cs",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAYwDgAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T23:43:32.49Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Configuration.cs",
+              "DocumentMoniker": "C:\\\u0410\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\TPRZ\\HttpServApp\\Models\\Configuration.cs",
+              "RelativeDocumentMoniker": "Models\\Configuration.cs",
+              "ToolTip": "C:\\\u0410\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\TPRZ\\HttpServApp\\Models\\Configuration.cs",
+              "RelativeToolTip": "Models\\Configuration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T23:43:26.671Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BuilderPage.cs",
+              "DocumentMoniker": "C:\\\u0410\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\TPRZ\\HttpServApp\\Builder\\BuilderPage.cs",
+              "RelativeDocumentMoniker": "Builder\\BuilderPage.cs",
+              "ToolTip": "C:\\\u0410\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\TPRZ\\HttpServApp\\Builder\\BuilderPage.cs",
+              "RelativeToolTip": "Builder\\BuilderPage.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8AAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T23:40:14.711Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ValidateStatisticState.cs",
+              "DocumentMoniker": "C:\\\u0410\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\TPRZ\\HttpServApp\\State\\ValidateStatisticState.cs",
+              "RelativeDocumentMoniker": "State\\ValidateStatisticState.cs",
+              "ToolTip": "C:\\\u0410\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\TPRZ\\HttpServApp\\State\\ValidateStatisticState.cs",
+              "RelativeToolTip": "State\\ValidateStatisticState.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T22:27:08.724Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ValidatePageState.cs",
+              "DocumentMoniker": "C:\\\u0410\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\TPRZ\\HttpServApp\\State\\ValidatePageState.cs",
+              "RelativeDocumentMoniker": "State\\ValidatePageState.cs",
+              "ToolTip": "C:\\\u0410\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\TPRZ\\HttpServApp\\State\\ValidatePageState.cs",
+              "RelativeToolTip": "State\\ValidatePageState.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABUAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T22:02:58.978Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "BuilderStat.cs",
+              "DocumentMoniker": "C:\\\u0410\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\TPRZ\\HttpServApp\\Builder\\BuilderStat.cs",
+              "RelativeDocumentMoniker": "Builder\\BuilderStat.cs",
+              "ToolTip": "C:\\\u0410\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\TPRZ\\HttpServApp\\Builder\\BuilderStat.cs",
+              "RelativeToolTip": "Builder\\BuilderStat.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAACwAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T21:31:51.066Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "BuilderInvalid.cs",
+              "DocumentMoniker": "C:\\\u0410\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\TPRZ\\HttpServApp\\Builder\\BuilderInvalid.cs",
+              "RelativeDocumentMoniker": "Builder\\BuilderInvalid.cs",
+              "ToolTip": "C:\\\u0410\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\TPRZ\\HttpServApp\\Builder\\BuilderInvalid.cs",
+              "RelativeToolTip": "Builder\\BuilderInvalid.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAUwBkAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T21:25:18.993Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IBuilder.cs",
+              "DocumentMoniker": "C:\\\u0410\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\TPRZ\\HttpServApp\\Builder\\IBuilder.cs",
+              "RelativeDocumentMoniker": "Builder\\IBuilder.cs",
+              "ToolTip": "C:\\\u0410\u043D\u044F \u0448\u043A\u043E\u043B\u0430\\3 \u043A\u0443\u0440\u0441\\TPRZ\\HttpServApp\\Builder\\IBuilder.cs",
+              "RelativeToolTip": "Builder\\IBuilder.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAApwBEAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T20:25:54.996Z",
+              "EditorCaption": ""
             }
           ]
         }

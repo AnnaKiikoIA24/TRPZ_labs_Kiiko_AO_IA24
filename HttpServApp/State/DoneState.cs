@@ -3,13 +3,13 @@ using System.Net.Sockets;
 
 namespace HttpServApp.State
 {
-    // Фінальний стан об'єкта
-    internal class DoneState: IState
+  // Фінальний стан об'єкта
+  internal class DoneState : IState
+  {
+    public void ProcessingHandler(HttpRequest httpRequest, Socket socket)
     {
-        public void ProcessingHandler(HttpRequest httpRequest, Socket socket)
-        {
-            // Цей стан - останній, перехід не потрібен
-            return;
-        }
+      // Цей стан - останній, перехід не потрібен
+      return;
     }
+  }
 }
