@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|d:\\git_repos\\trpz_labs_kiiko_ao_ia24\\httpservapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|d:\\git_repos\\trpz_labs_kiiko_ao_ia24\\httpservapp\\classdiagramapp.cd||{59B0B277-7DDF-4E36-A3ED-02DAC5B9E2FA}|",
+      "RelativeMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|solutionrelative:classdiagramapp.cd||{59B0B277-7DDF-4E36-A3ED-02DAC5B9E2FA}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,21 +14,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-21T21:47:26.373Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
@@ -36,6 +23,18 @@
             {
               "$type": "Bookmark",
               "Name": "ST:132:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ClassDiagramApp.cd",
+              "DocumentMoniker": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\ClassDiagramApp.cd",
+              "RelativeDocumentMoniker": "ClassDiagramApp.cd",
+              "ToolTip": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\ClassDiagramApp.cd*",
+              "RelativeToolTip": "ClassDiagramApp.cd*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000463|",
+              "WhenOpened": "2024-12-06T08:50:03.465Z",
+              "EditorCaption": ""
             }
           ]
         }

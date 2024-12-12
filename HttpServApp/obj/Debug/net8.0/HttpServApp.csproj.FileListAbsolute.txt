@@ -51,3 +51,5 @@ C:\Аня школа\3 курс\TPRZ\HttpServApp\obj\Debug\net8.0\refint\HttpSer
 C:\Аня школа\3 курс\TPRZ\HttpServApp\obj\Debug\net8.0\HttpServApp.pdb
 C:\Аня школа\3 курс\TPRZ\HttpServApp\obj\Debug\net8.0\HttpServApp.genruntimeconfig.cache
 C:\Аня школа\3 курс\TPRZ\HttpServApp\obj\Debug\net8.0\ref\HttpServApp.dll
+D:\git_repos\TRPZ_labs_Kiiko_AO_IA24\HttpServApp\bin\Debug\net8.0\System.ServiceProcess.ServiceController.dll
+D:\git_repos\TRPZ_labs_Kiiko_AO_IA24\HttpServApp\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.ServiceProcess.ServiceController.dll
