@@ -1,4 +1,5 @@
-﻿using HttpServApp.Models;
+﻿using HttpServApp.Fabric;
+using HttpServApp.Models;
 using HttpServApp.State;
 using System.Net;
 using System.Net.Sockets;
@@ -29,52 +30,41 @@ namespace HttpServApp.Processing
     /// </summary>
     public void DoWork()
     {
-      Validator validator = new Validator(repository, socket);
-      // Отримуємо строку запиту
-      string strReceiveRequest = validator.GetStringRequest();
-
-      if (string.IsNullOrEmpty(strReceiveRequest))
-      {
-        socket.Close();
-        socket.Dispose();
-        return;
-      }
-
-      Console.WriteLine($"================ Змiст запиту:\n{strReceiveRequest}");
-      HttpRequest httpRequest;
+      Validator validator = null;
+      // Об'єкт, метод якого створює запит необхідного типу
+      ICreator? creator;
       try
       {
+        validator = new Validator(socket);
+        // Аналізуємо строку запиту
+        if (string.IsNullOrEmpty(validator.StrReceiveRequest))
+        {
+          Console.WriteLine("================ Строка запиту пуста. Подальша обробка не можлива.");
+          socket.Close();
+          socket.Dispose();
+          return;
+        }
+
+        Console.WriteLine($"================ Змiст запиту:\n{validator.StrReceiveRequest}");
+
         // Визначаємо тип запиту
         string typeRequest = validator.GetTypeRequest();
+
         switch (typeRequest)
         {
           // Запит сторінки
           case "page":
             {
-              // Запит сторінки валідний, інакше - Exception
-              httpRequest = validator.ParsePageRequest();
-              Console.WriteLine($"Processing: запит сторiнки {((HttpRequestPage)httpRequest).Path}!");
-              // Початковий стан запиту: валідний запит Web-сторінки 
-              // Далі викликаємо метод TransitionTo, що в процесі виконання змінює стан запиту
-              // Початковий стан ValidatePageState
-              httpRequest.TransitionTo(new ValidatePageState(), socket);
+              creator = new CreatorRequestPage();
               break;
             }
           // Запит статистики
           case "stat":
             {
-              // Запит статистики валідний, інакше - Exception
-              httpRequest = validator.ParseStatisticRequest();
-              Console.WriteLine($"Processing: запит статистики за перiод " +
-                  $"{((HttpRequestStat)httpRequest).DateBeg}-{((HttpRequestStat)httpRequest).DateEnd}!");
-              // Початковий стан запиту: валідний запит статистики 
-              // Далі викликаємо метод TransitionTo, що в процесі виконання змінює стан запиту,
-              // Початковий стан ValidateStatisticState
-              httpRequest.TransitionTo(new ValidateStatisticState(), socket);
+              creator = new CreatorRequestStat();
               break;
             }
           default:
-            Console.WriteLine("Processing: Невизначений тип запиту!");
             throw new WebException("Невизначений тип запиту", WebExceptionStatus.ProtocolError);
 
         }
@@ -84,11 +74,13 @@ namespace HttpServApp.Processing
         // Запит favicon ігноруємо
         if (webExc.Status == WebExceptionStatus.ReceiveFailure)
           return;
+        creator = new CreatorRequestInvalid();
+      }
 
-        httpRequest = new HttpRequestInvalid(repository, DateTime.Now,
-            socket.RemoteEndPoint?.ToString() ?? "", webExc.Message);
-        // Початковий стан запиту: InvalidState
-        httpRequest.TransitionTo(new InvalidState(), socket);
+      if (creator != null)
+      {
+        (HttpRequest httpRequest, IState startState) = creator.FactoryMethod(validator, repository);
+        httpRequest.TransitionTo(startState, socket);
       }
 
       socket.Close();

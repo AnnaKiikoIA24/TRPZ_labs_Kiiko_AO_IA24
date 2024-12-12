@@ -3,8 +3,36 @@
   "WorkspaceRootPath": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|d:\\git_repos\\trpz_labs_kiiko_ao_ia24\\httpservapp\\classdiagramapp.cd||{59B0B277-7DDF-4E36-A3ED-02DAC5B9E2FA}|",
-      "RelativeMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|solutionrelative:classdiagramapp.cd||{59B0B277-7DDF-4E36-A3ED-02DAC5B9E2FA}|"
+      "AbsoluteMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|d:\\git_repos\\trpz_labs_kiiko_ao_ia24\\httpservapp\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|solutionrelative:app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|d:\\git_repos\\trpz_labs_kiiko_ao_ia24\\httpservapp\\processing\\threadprocessing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|solutionrelative:processing\\threadprocessing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|d:\\git_repos\\trpz_labs_kiiko_ao_ia24\\httpservapp\\fabric\\creatorrequestinvalid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|solutionrelative:fabric\\creatorrequestinvalid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|d:\\git_repos\\trpz_labs_kiiko_ao_ia24\\httpservapp\\fabric\\creatorrequeststat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|solutionrelative:fabric\\creatorrequeststat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|d:\\git_repos\\trpz_labs_kiiko_ao_ia24\\httpservapp\\fabric\\creatorrequestpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|solutionrelative:fabric\\creatorrequestpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|d:\\git_repos\\trpz_labs_kiiko_ao_ia24\\httpservapp\\fabric\\icreator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|solutionrelative:fabric\\icreator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|d:\\git_repos\\trpz_labs_kiiko_ao_ia24\\httpservapp\\models\\httprequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|solutionrelative:models\\httprequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|d:\\git_repos\\trpz_labs_kiiko_ao_ia24\\httpservapp\\state\\validatepagestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|solutionrelative:state\\validatepagestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,13 +55,99 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ClassDiagramApp.cd",
-              "DocumentMoniker": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\ClassDiagramApp.cd",
-              "RelativeDocumentMoniker": "ClassDiagramApp.cd",
-              "ToolTip": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\ClassDiagramApp.cd*",
-              "RelativeToolTip": "ClassDiagramApp.cd*",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000463|",
-              "WhenOpened": "2024-12-06T08:50:03.465Z",
+              "Title": "App.config",
+              "DocumentMoniker": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\App.config",
+              "RelativeDocumentMoniker": "App.config",
+              "ToolTip": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\App.config",
+              "RelativeToolTip": "App.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-12-12T23:15:06.671Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ICreator.cs",
+              "DocumentMoniker": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\Fabric\\ICreator.cs",
+              "RelativeDocumentMoniker": "Fabric\\ICreator.cs",
+              "ToolTip": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\Fabric\\ICreator.cs",
+              "RelativeToolTip": "Fabric\\ICreator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T21:46:27.281Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ValidatePageState.cs",
+              "DocumentMoniker": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\State\\ValidatePageState.cs",
+              "RelativeDocumentMoniker": "State\\ValidatePageState.cs",
+              "ToolTip": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\State\\ValidatePageState.cs",
+              "RelativeToolTip": "State\\ValidatePageState.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T21:37:12.969Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "HttpRequest.cs",
+              "DocumentMoniker": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\Models\\HttpRequest.cs",
+              "RelativeDocumentMoniker": "Models\\HttpRequest.cs",
+              "ToolTip": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\Models\\HttpRequest.cs",
+              "RelativeToolTip": "Models\\HttpRequest.cs",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAAACIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T21:18:26.367Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CreatorRequestStat.cs",
+              "DocumentMoniker": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\Fabric\\CreatorRequestStat.cs",
+              "RelativeDocumentMoniker": "Fabric\\CreatorRequestStat.cs",
+              "ToolTip": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\Fabric\\CreatorRequestStat.cs",
+              "RelativeToolTip": "Fabric\\CreatorRequestStat.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwB0AAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T19:58:05.62Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CreatorRequestPage.cs",
+              "DocumentMoniker": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\Fabric\\CreatorRequestPage.cs",
+              "RelativeDocumentMoniker": "Fabric\\CreatorRequestPage.cs",
+              "ToolTip": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\Fabric\\CreatorRequestPage.cs",
+              "RelativeToolTip": "Fabric\\CreatorRequestPage.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAxwBsAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T19:57:20.249Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CreatorRequestInvalid.cs",
+              "DocumentMoniker": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\Fabric\\CreatorRequestInvalid.cs",
+              "RelativeDocumentMoniker": "Fabric\\CreatorRequestInvalid.cs",
+              "ToolTip": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\Fabric\\CreatorRequestInvalid.cs",
+              "RelativeToolTip": "Fabric\\CreatorRequestInvalid.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T19:49:28.787Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ThreadProcessing.cs",
+              "DocumentMoniker": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\Processing\\ThreadProcessing.cs",
+              "RelativeDocumentMoniker": "Processing\\ThreadProcessing.cs",
+              "ToolTip": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\Processing\\ThreadProcessing.cs",
+              "RelativeToolTip": "Processing\\ThreadProcessing.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAowEsAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T20:26:24.962Z",
               "EditorCaption": ""
             }
           ]
