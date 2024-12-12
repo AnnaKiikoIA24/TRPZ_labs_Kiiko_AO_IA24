@@ -13,6 +13,7 @@ namespace HttpServApp.Models
     // Строка підключення до БД
     public static string? DBConnStr { get; set; } = Convert.ToString(ConfigurationManager.AppSettings["db_conn_str"]);
 
-
+    // Ключ доступа адміністратора до даних статистики
+    public static string? KeyAuthorization { get; } = Convert.ToString(ConfigurationManager.AppSettings["key_authorization"]);
   }
 }

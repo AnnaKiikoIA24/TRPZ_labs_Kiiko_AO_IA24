@@ -1,7 +1,28 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|d:\\git_repos\\trpz_labs_kiiko_ao_ia24\\httpservapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|d:\\git_repos\\trpz_labs_kiiko_ao_ia24\\httpservapp\\fabric\\creatorrequestinvalid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|solutionrelative:fabric\\creatorrequestinvalid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|d:\\git_repos\\trpz_labs_kiiko_ao_ia24\\httpservapp\\fabric\\creatorrequestpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|solutionrelative:fabric\\creatorrequestpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|d:\\git_repos\\trpz_labs_kiiko_ao_ia24\\httpservapp\\fabric\\creatorrequeststat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|solutionrelative:fabric\\creatorrequeststat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|d:\\git_repos\\trpz_labs_kiiko_ao_ia24\\httpservapp\\fabric\\icreator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25BEF031-3333-4A8C-9409-C296354444D0}|HttpServApp.csproj|solutionrelative:fabric\\icreator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -18,6 +39,71 @@
             {
               "$type": "Bookmark",
               "Name": "ST:132:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T23:40:29.092Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CreatorRequestInvalid.cs",
+              "DocumentMoniker": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\Fabric\\CreatorRequestInvalid.cs",
+              "RelativeDocumentMoniker": "Fabric\\CreatorRequestInvalid.cs",
+              "ToolTip": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\Fabric\\CreatorRequestInvalid.cs",
+              "RelativeToolTip": "Fabric\\CreatorRequestInvalid.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T23:40:26.174Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CreatorRequestPage.cs",
+              "DocumentMoniker": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\Fabric\\CreatorRequestPage.cs",
+              "RelativeDocumentMoniker": "Fabric\\CreatorRequestPage.cs",
+              "ToolTip": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\Fabric\\CreatorRequestPage.cs",
+              "RelativeToolTip": "Fabric\\CreatorRequestPage.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T23:40:25.653Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CreatorRequestStat.cs",
+              "DocumentMoniker": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\Fabric\\CreatorRequestStat.cs",
+              "RelativeDocumentMoniker": "Fabric\\CreatorRequestStat.cs",
+              "ToolTip": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\Fabric\\CreatorRequestStat.cs",
+              "RelativeToolTip": "Fabric\\CreatorRequestStat.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T23:40:25.06Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ICreator.cs",
+              "DocumentMoniker": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\Fabric\\ICreator.cs",
+              "RelativeDocumentMoniker": "Fabric\\ICreator.cs",
+              "ToolTip": "D:\\git_repos\\TRPZ_labs_Kiiko_AO_IA24\\HttpServApp\\Fabric\\ICreator.cs",
+              "RelativeToolTip": "Fabric\\ICreator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T23:40:24.558Z",
+              "EditorCaption": ""
             }
           ]
         }

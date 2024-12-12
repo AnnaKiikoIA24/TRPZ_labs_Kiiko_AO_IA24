@@ -1,59 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="HttpServApp.Builder.BuilderInvalid">
-    <Position X="6.25" Y="2.5" Width="1.5" />
+  <Class Name="HttpServApp.Models.HttpRequest" Collapsed="true">
+    <Position X="2.75" Y="6" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAEAAAAAAAAAAAAAAAAAAABABAAAABAAAAAAAAIAAAA=</HashCode>
-      <FileName>Builder\BuilderInvalid.cs</FileName>
+      <HashCode>IAAAABIEAABAAAAAAACggAAAAAAAAABUAAAA6AAAAAA=</HashCode>
+      <FileName>Models\HttpRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HttpServApp.Models.HttpRequestPage">
+    <Position X="2.5" Y="3" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAAAFAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\HttpRequestPage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HttpServApp.Models.HttpRequestStat">
+    <Position X="0.5" Y="3" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAiCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\HttpRequestStat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HttpServApp.Fabric.CreatorRequestStat">
+    <Position X="0.5" Y="1.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Fabric\CreatorRequestStat.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="HttpServApp.Builder.BuilderPage">
-    <Position X="4" Y="2.5" Width="1.5" />
+  <Class Name="HttpServApp.Fabric.CreatorRequestPage">
+    <Position X="2.5" Y="1.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAEAAAACAAAAAAAAAAAAAABAAAAAABAAAAAAAAIAAAA=</HashCode>
-      <FileName>Builder\BuilderPage.cs</FileName>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Fabric\CreatorRequestPage.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="HttpServApp.Builder.BuilderStat">
-    <Position X="1.75" Y="2.5" Width="1.5" />
+  <Class Name="HttpServApp.Fabric.CreatorRequestInvalid">
+    <Position X="4.5" Y="1.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAEAAAAAAAAAAAAAAAgAACBAAAAAABAAIAAAAAIAAAQ=</HashCode>
-      <FileName>Builder\BuilderStat.cs</FileName>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Fabric\CreatorRequestInvalid.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="HttpServApp.State.ValidatePageState">
-    <Position X="4" Y="0.5" Width="1.5" />
+  <Class Name="HttpServApp.Models.HttpRequestInvalid">
+    <Position X="4.5" Y="3" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
-      <FileName>State\ValidatePageState.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\HttpRequestInvalid.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
-  <Class Name="HttpServApp.State.ValidateStatisticState">
-    <Position X="1.75" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
-      <FileName>State\ValidateStatisticState.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="HttpServApp.State.InvalidState">
-    <Position X="6.25" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
-      <FileName>State\InvalidState.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Interface Name="HttpServApp.Builder.IBuilder">
-    <Position X="3.75" Y="5.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAEAAAAAAAAAAAAAAAAAAABAAAAAABAAAAAAAAIAAAA=</HashCode>
-      <FileName>Builder\IBuilder.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
