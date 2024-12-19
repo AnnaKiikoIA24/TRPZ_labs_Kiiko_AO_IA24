@@ -2,9 +2,9 @@
 using HttpServApp.Processing;
 using HttpServApp.State;
 
-namespace HttpServApp.Fabric
+namespace HttpServApp.Factory
 {
-  internal class CreatorRequestInvalid : ICreator
+  internal class CreatorRequestInvalid : ICreatorRequest
   {
     /// <summary>
     /// Повертає об'єкт не валідного запиту 

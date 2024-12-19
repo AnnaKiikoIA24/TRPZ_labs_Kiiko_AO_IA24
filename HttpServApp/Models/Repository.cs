@@ -1,13 +1,14 @@
-﻿using Npgsql;
+﻿using HttpServApp.Mediator;
+using Npgsql;
 
 namespace HttpServApp.Models
 {
   internal class Repository : IRepository
   {
-    public string ConnStr { get; } = Configuration.DBConnStr;
+    public string ConnStr { get; } = Configuration.DBConnStr ?? string.Empty;
+    public IMediator? Mediator { get; set; }
     public List<HttpRequest> Requests { get; } = new List<HttpRequest>();
 
-    private readonly NpgsqlConnection connection = new NpgsqlConnection();
     public Repository() { }
 
     public Repository(string connStr)
@@ -18,21 +19,30 @@ namespace HttpServApp.Models
     public void AddRequest(HttpRequest request)
     {
       Requests.Add(request);
+      Mediator?.Notify(this, $"Запит з Id={request.IdRequest} доданий до колекцiї. Загальна кiлькiсть {Requests.Count} запитiв.");
     }
 
     public void RemoveRequest(HttpRequest request)
     {
       if (Requests.Contains(request))
+      {
         Requests.Remove(request);
-      else throw new Exception("Object not found in collection");
+        Mediator?.Notify(this, $"Запит з Id={request.IdRequest} видалений з колекцiї. Загальна кiлькiсть {Requests.Count} запитiв.");
+      }
+      else
+        Mediator?.Notify(this, $"Об'єкт {request} не знайдений в колекцiї запитiв.");
     }
 
     public void UpdateRequest(HttpRequest request)
     {
       HttpRequest? existRequest = GetRequestById(request.IdRequest);
       if (existRequest == null)
-        throw new Exception("Updatable object not found in collection");
-      existRequest.Status = request.Status;
+        Mediator?.Notify(this, $"Запит для оновлення з Id={request.IdRequest} не знайдений в колекцiї запитiв.");
+      else
+      {
+        existRequest.Status = request.Status;
+        Mediator?.Notify(this, $"Статус запиту з Id={request.IdRequest} оновлено: {existRequest.Status}.");
+      }
     }
 
     public HttpRequest? GetRequestById(long idRequest)
@@ -40,9 +50,10 @@ namespace HttpServApp.Models
       return Requests.Find(request => request.IdRequest == idRequest);
     }
 
-    // Завантаження із БД, формування колекції Requests
+    // Завантаження iз БД, формування колекцiї Requests
     public List<HttpRequest> GetRequestsByPeriod(DateTime dateBeg, DateTime dateEnd)
     {
+      Mediator?.Notify(this, $"Отримання перелiку запитiв за перiод з {dateBeg} по {dateEnd}.");
       NpgsqlConnection connection = new NpgsqlConnection(ConnStr);
       try
       {
@@ -83,6 +94,7 @@ namespace HttpServApp.Models
                     Convert.ToString(dataReader["Ip_Address"]),
                     dataReader["Content_Type_Request"] != DBNull.Value ? Convert.ToString(dataReader["Content_Type_Request"]) : null,
                     dataReader["Path"] != DBNull.Value ? Convert.ToString(dataReader["Path"]) : null,
+                    dataReader["Message"] != DBNull.Value ? Convert.ToString(dataReader["Message"]) : null,
                     Convert.ToInt64(dataReader["Id_Request"]));
                 break;
 
@@ -93,7 +105,8 @@ namespace HttpServApp.Models
                     dataReader["Method"] != DBNull.Value ? Convert.ToString(dataReader["Method"]) : null,
                     Convert.ToString(dataReader["Ip_Address"]),
                     dataReader["Content_Type_Request"] != DBNull.Value ? Convert.ToString(dataReader["Content_Type_Request"]) : null,
-                     Convert.ToDateTime(dataReader["Date_Beg"]), Convert.ToDateTime(dataReader["Date_End"]), "",
+                    Convert.ToDateTime(dataReader["Date_Beg"]), Convert.ToDateTime(dataReader["Date_End"]), "",
+                    dataReader["Message"] != DBNull.Value ? Convert.ToString(dataReader["Message"]) : null,
                     Convert.ToInt64(dataReader["Id_Request"]))
                 {
                   CntRows = Convert.ToInt32(dataReader["Cnt_Rows"])
@@ -114,7 +127,7 @@ namespace HttpServApp.Models
 
             if (request != null)
             {
-              // Додаємо результати відповіді
+              // Додаємо результати вiдповiдi
               if (dataReader["DateTime_Response"] != null)
               {
                 request.Status = (StatusEnum)Convert.ToInt32(dataReader["Status"]);
@@ -125,7 +138,7 @@ namespace HttpServApp.Models
                   StatusSend = Convert.ToByte(dataReader["Status_Send"]),
                 };
               }
-              // Додаємо до загальної колекції
+              // Додаємо до загальної колекцiї
               AddRequest(request);
             }
 
@@ -137,7 +150,7 @@ namespace HttpServApp.Models
       }
       catch (Exception ex)
       {
-        Console.WriteLine($"SELECT error: {ex.Message}");
+        Mediator?.Notify(this, $"SELECT error: {ex.Message}");
       }
       finally
       {
@@ -196,7 +209,7 @@ namespace HttpServApp.Models
         cmd.CommandText = query;
         cmd.ExecuteNonQuery();
 
-        // Отримання ідентифікатора з бази даних для нового об'єкта
+        // Отримання iдентифiкатора з бази даних для нового об'єкта
         if (typeOper == '+')
         {
           cmd.CommandText = @"SELECT currval('""Http_Request_Seq_Id""')  as id";
@@ -251,10 +264,12 @@ namespace HttpServApp.Models
             cmd.ExecuteNonQuery();
           }
         }
+
+        Mediator?.Notify(this, "Данi про запит успiшно записанi до БД");
       }
       catch (Exception ex)
       {
-        Console.WriteLine($"DML error: {ex.Message}");
+        Mediator?.Notify(this, $"DML error: {ex.Message}");
       }
       finally
       {

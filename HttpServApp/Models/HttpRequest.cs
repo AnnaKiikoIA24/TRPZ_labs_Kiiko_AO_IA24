@@ -72,7 +72,8 @@ namespace HttpServApp.Models
     protected string CreateHeader()
     {
       return $"HTTP/{Version ?? "1.1"} {Enum.Format(typeof(StatusEnum), Status, "d")} {Status} " +
-          $"\nContent-Type:{ContentTypeRequest ?? "text/html"};charset=UTF-8;" +
+          //$"\nContent-Type:{ContentTypeRequest ?? "text/html"};charset=UTF-8;" +
+          $"\nContent-Type:{ContentTypeRequest ?? "text/html"};" +
           $"\nContent-Length:{Response?.ContentLength ?? 0}" +
           $"\nConnection: close\n\n";
     }
@@ -86,7 +87,11 @@ namespace HttpServApp.Models
         if (socket != null)
         {
           // Відправляємо відповідь як масив байт в сокеті
-          socket.Send(Encoding.UTF8.GetBytes(htmlResponse));
+          if (ContentTypeRequest.IndexOf("image") != -1)
+            socket.Send(Encoding.ASCII.GetBytes(htmlResponse));
+          else
+            socket.Send(Encoding.UTF8.GetBytes(htmlResponse));
+          // socket.Send(Convert.FromBase64String(htmlResponse));
           // Встановлюємо ознаку відправленої відповіді 
           Response.StatusSend = 1;
         }

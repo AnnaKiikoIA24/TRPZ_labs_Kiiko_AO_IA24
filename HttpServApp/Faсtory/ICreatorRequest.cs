@@ -2,13 +2,13 @@
 using HttpServApp.Processing;
 using HttpServApp.State;
 
-namespace HttpServApp.Fabric
+namespace HttpServApp.Factory
 {
   /// <summary>
-  /// Інтерфейс ICreator визначає методи 
+  /// Інтерфейс ICreatorRequest визначає методи 
   /// створення об'єкту запиту та його початкового стану
   /// </summary>
-  internal interface ICreator
+  internal interface ICreatorRequest
   {
     /// <summary>
     /// Створення об'єкту-кортежу (tuple) запиту та його початкового стану

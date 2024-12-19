@@ -1,4 +1,5 @@
-﻿using HttpServApp.Fabric;
+﻿using HttpServApp.Factory;
+using HttpServApp.Mediator;
 using HttpServApp.Models;
 using HttpServApp.State;
 using System.Net;
@@ -6,36 +7,27 @@ using System.Net.Sockets;
 
 namespace HttpServApp.Processing
 {
-  internal class ThreadProcessing
+  internal class ProcessingArgs
   {
-    // Об'єкт ля забезпечення обміну даними через мережу
-    private readonly Socket socket;
-    // Потік обробки даних
-    private readonly Thread workThread;
-    // Посилання на репозиторій
-    private readonly Repository repository;
-
-    public ThreadProcessing(Repository repository, Socket socket)
-    {
-      this.repository = repository;
-      this.socket = socket;
-
-      // Створюємо та запускаємо потік обробки даних запиту
-      workThread = new Thread(DoWork) { Name = "requestThread" };
-      workThread.Start();
-    }
+    public required Repository Repository { get; set; }
+    public required Socket Socket { get; set; }
+  }
+  internal class RequestProcessing
+  {
+    public IMediator? Mediator { get; set; }
 
     /// <summary>
-    /// Метод, що виконується при запуску потока обробки даних запиту
+    /// Метод, що виконує обробку даних запиту 
+    /// (він є реентерабельним, тобто потокобезпечним, не залежить від стану об'єкта)
     /// </summary>
-    public void DoWork()
+    protected virtual void DoWork(ProcessingArgs threadArgs)
     {
-      Validator validator = null;
+      Socket socket = threadArgs.Socket;
+      Validator validator = new Validator(socket);
       // Об'єкт, метод якого створює запит необхідного типу
-      ICreator? creator;
+      ICreatorRequest? creator;
       try
       {
-        validator = new Validator(socket);
         // Аналізуємо строку запиту
         if (string.IsNullOrEmpty(validator.StrReceiveRequest))
         {
@@ -79,7 +71,7 @@ namespace HttpServApp.Processing
 
       if (creator != null)
       {
-        (HttpRequest httpRequest, IState startState) = creator.FactoryMethod(validator, repository);
+        (HttpRequest httpRequest, IState startState) = creator.FactoryMethod(validator, threadArgs.Repository);
         httpRequest.TransitionTo(startState, socket);
       }
 

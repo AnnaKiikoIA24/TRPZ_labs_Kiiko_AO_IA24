@@ -1,4 +1,5 @@
-﻿using HttpServApp.Models;
+﻿using HttpServApp.Mediator;
+using HttpServApp.Models;
 using HttpServApp.Processing;
 using System.Net;
 using System.Net.Sockets;
@@ -11,6 +12,8 @@ namespace HttpServApp
     private bool isRunning = false;
     // Об'єкт потоку
     private readonly Thread listenerThread;
+
+    public IMediator? Mediator { get; set; }
 
     public Listener()
     {
@@ -39,7 +42,6 @@ namespace HttpServApp
       Socket listenSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
       try
       {
-        Repository repository = new Repository();
 
         // Створення локальної точки для прослуховування вхідних підключень
         IPEndPoint ipPoint = new IPEndPoint(IPAddress.Any, Configuration.Port);
@@ -58,15 +60,14 @@ namespace HttpServApp
           Console.WriteLine($"\n================ Адреса пiдключеного клiєнта: {responseSocket.RemoteEndPoint}");
           if (responseSocket.Connected)
           {
-            // Створюємо об'єкт для обробки запиту
-            new ThreadProcessing(repository, responseSocket);
+            // Відправка сповіщення медіатору про надходження нового запиту від клієнта 
+            Mediator?.Notify(this, responseSocket);
           }
         }
       }
       catch (Exception ex)
       {
         Console.WriteLine($"Помилка пiдключення: {ex.Message}");
-        //Thread.CurrentThread.Abort();
       }
       finally
       {

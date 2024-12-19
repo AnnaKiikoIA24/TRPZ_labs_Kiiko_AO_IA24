@@ -18,6 +18,11 @@ namespace HttpServApp.Builder
         periodRequests = httpRequestStat.Repository.GetRequestsByPeriod(httpRequestStat.DateBeg, httpRequestStat.DateEnd);
         httpRequestStat.CntRows = periodRequests.Count;
       }
+      catch (ArgumentNullException)
+      {
+        Console.WriteLine("BuilderStat: Object is not HttpRequest");
+        throw;
+      }
       catch (Exception exc)
       {
         httpRequestStat.Message = $"Вiдповiдь на запит статистики не сформована: {exc.Message}";
@@ -61,7 +66,7 @@ namespace HttpServApp.Builder
       }
       else if (httpRequestStat.KeyAuthorization != Configuration.KeyAuthorization)
       {
-        httpRequestStat.Message = "Неправильний ключ авторизації, запит статистики не виконано.";
+        httpRequestStat.Message = $"Статус: {httpRequestStat.Status}. Неправильний ключ авторизації, запит статистики не виконано.";
         httpRequestStat.Response = new HttpResponse(
             DateTime.Now, Encoding.UTF8.GetByteCount(httpRequestStat.Message));
         Console.WriteLine(httpRequestStat.Message);
@@ -86,7 +91,10 @@ namespace HttpServApp.Builder
                           $"\t\t\t\t\t<td scope=\"col\">{req.DateTimeRequest:dd.MM.yyyy HH:mm:ss}</td>\n" +
                           $"\t\t\t\t\t<td scope=\"col\">{req.TypeRequest}</td>\n" +
                           $"\t\t\t\t\t<td scope=\"col\">{req.IpAddress}</td>\n" +
-                          $"\t\t\t\t\t<td scope=\"col\">{req.Status}</td>\n" +
+                          $"\t\t\t\t\t<td scope=\"col\" " +
+                              $"{(req.Status != StatusEnum.OK && req.TypeRequest != TypeRequestEnum.НЕ_ВИЗНАЧЕНО ? " class=\"text-warning\"" : string.Empty)}>" +
+                                $"{req.Status}" +
+                              $"</td>\n" +
                           $"\t\t\t\t\t<td scope=\"col\">{(req.Response?.StatusSend == 1 ? "Так" : "Ні")}</td>\n" +
                           $"\t\t\t\t\t<td scope=\"col\">{req.ContentTypeRequest}</td>\n" +
                           $"\t\t\t\t\t<td scope=\"col\">{req.Method}</td>\n" +
