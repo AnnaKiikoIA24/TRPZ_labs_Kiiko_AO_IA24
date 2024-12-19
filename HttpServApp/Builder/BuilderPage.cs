@@ -33,7 +33,7 @@ namespace HttpServApp.Builder
       // Якщо сторінка, що запитується, не знайдена в репозиторії => виводимо повідомлення про це у відповідь
       if (!File.Exists(httpRequestPage.Path))
       {
-        httpRequestPage.Message = $"Файл сторiнки '{httpRequestPage.Path}' не знайдений";
+        httpRequestPage.Message = $"Статус: {httpRequestPage.Status}. Файл сторiнки '{httpRequestPage.Path}' не знайдений";
         httpRequestPage.Response = new HttpResponse(
             DateTime.Now, Encoding.UTF8.GetByteCount(httpRequestPage.Message));
 
@@ -49,7 +49,12 @@ namespace HttpServApp.Builder
         {
           htmlResponse = reader.ReadToEnd();
         }
-        httpRequestPage.Response = new HttpResponse(
+
+        if (httpRequestPage.ContentTypeRequest.IndexOf("image") != -1)
+          httpRequestPage.Response = new HttpResponse(
+              DateTime.Now, Encoding.ASCII.GetByteCount(htmlResponse));
+        else
+          httpRequestPage.Response = new HttpResponse(
             DateTime.Now, Encoding.UTF8.GetByteCount(htmlResponse));
 
         Console.WriteLine($"Сторiнка {httpRequestPage.Path} сформована");

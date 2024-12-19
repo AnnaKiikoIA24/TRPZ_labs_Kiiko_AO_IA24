@@ -13,8 +13,8 @@
         DateTime dateTimeRequest,
         string version, string method,
         string ipAddress, string contentType,
-        string path, long idRequest = -1)
-        : base(repository, dateTimeRequest, version, method, ipAddress, contentType, null, idRequest)
+        string path, string? message = null,long idRequest = -1)
+        : base(repository, dateTimeRequest, version, method, ipAddress, contentType, message, idRequest)
     {
       Path = path;
       TypeRequest = TypeRequestEnum.СТОРІНКА;

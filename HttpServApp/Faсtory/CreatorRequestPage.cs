@@ -3,9 +3,9 @@ using HttpServApp.State;
 using HttpServApp.Processing;
 using System.Net;
 
-namespace HttpServApp.Fabric
+namespace HttpServApp.Factory
 {
-  internal class CreatorRequestPage : ICreator
+  internal class CreatorRequestPage : ICreatorRequest
   {
     /// <summary>
     /// Повертає об'єкт запиту Web-сторінки
@@ -29,13 +29,19 @@ namespace HttpServApp.Fabric
       }
       catch (WebException webE)
       {
+        HttpRequestInvalid httpRequest = new HttpRequestInvalid(
+          repository, DateTime.Now,
+          validator.GetRemoteEndPoint(), $"{webE.Message} статус={webE.Status}");
         Console.WriteLine($"CreatorRequestPage WebException: {webE.Message} статус={webE.Status}");
-        throw;
+        return (httpRequest, new InvalidState());
       }
       catch (Exception exc)
       {
+        HttpRequestInvalid httpRequest = new HttpRequestInvalid(
+          repository, DateTime.Now,
+          validator.GetRemoteEndPoint(), exc.Message);
         Console.WriteLine($"CreatorRequestPage Exception: {exc.Message}");
-        throw;
+        return (httpRequest, new InvalidState());
       }
     }
     

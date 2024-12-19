@@ -8,6 +8,8 @@ namespace HttpServApp.Models
     public static int Port { get; set; } = Convert.ToInt32(ConfigurationManager.AppSettings["port"]);
     // Кількість вхідних підключень у черзі на обробку
     public static int BackLog { get; set; } = Convert.ToInt32(ConfigurationManager.AppSettings["back_log"]);
+
+    public static bool MultiThread { get; set; } = Convert.ToBoolean(ConfigurationManager.AppSettings["multi_thread"]);
     // Шлях для доступу до репозиторію Web-сторінок
     public static string? ResourcePath { get; set; } = Convert.ToString(ConfigurationManager.AppSettings["resource_path"]);
     // Строка підключення до БД
