@@ -30,6 +30,9 @@ namespace HttpServApp.Builder
       // Якщо periodRequests не визначено (сталась помилка при виборі даних), то STATUS = BAD_SERVER
       if (periodRequests == null)
         httpRequestStat.Status = StatusEnum.BAD_SERVER;
+      // Якщо ключ авторизації не співпадає, то STATUS = UNAUTHORIZED
+      else if (httpRequestStat.KeyAuthorization != Configuration.KeyAuthorization)
+         httpRequestStat.Status = StatusEnum.UNAUTHORIZED;
       else
         // Якщо записи (запити) в репозиторії БД за обраний період не знайдено => STATUS = NOT_FOUND
         // Якщо знайдені => STATUS = OK
@@ -56,11 +59,21 @@ namespace HttpServApp.Builder
         return $"Content-Length:{httpRequestStat.Response?.ContentLength ?? 0}\n\n" +
             $"{httpRequestStat.Message ?? "Помилка при виборі даних статистики"}";
       }
+      else if (httpRequestStat.KeyAuthorization != Configuration.KeyAuthorization)
+      {
+        httpRequestStat.Message = "Неправильний ключ авторизації, запит статистики не виконано.";
+        httpRequestStat.Response = new HttpResponse(
+            DateTime.Now, Encoding.UTF8.GetByteCount(httpRequestStat.Message));
+        Console.WriteLine(httpRequestStat.Message);
+
+        return $"Content-Length:{httpRequestStat.Response?.ContentLength ?? 0}\n\n" +
+            $"{httpRequestStat.Message}";
+      }
       else
       {
         string header = $"Данi статистики за перiод " +
-        $"з {httpRequestStat.DateBeg:dd.MM.yyyy HH:mm:ss} по {httpRequestStat.DateEnd:dd.MM.yyyy HH:mm:ss}";
-        Console.WriteLine($"{header}{(periodRequests.Count > 0 ? "вибранi" : "вiдсутнi")}");
+        $"з {httpRequestStat.DateBeg:dd.MM.yyyy HH:mm} по {httpRequestStat.DateEnd:dd.MM.yyyy HH:mm}";
+        Console.WriteLine($"{header}{(periodRequests.Count > 0 ? " вибранi" : " вiдсутнi")}");
 
         string tableResponse = "";
         int indexRow = 1;
@@ -83,8 +96,8 @@ namespace HttpServApp.Builder
                           $"</td>\n" +
                           $"\t\t\t\t\t<td scope=\"col\">" +
                               $"{(req.TypeRequest == TypeRequestEnum.СТАТИСТИКА
-                              ? ((HttpRequestStat)req).DateBeg.ToString("dd.MM.yyyy HH:mm:ss") + "-" +
-                                  ((HttpRequestStat)req).DateEnd.ToString("dd.MM.yyyy HH:mm:ss") + ": " +
+                              ? ((HttpRequestStat)req).DateBeg.ToString("dd.MM.yyyy HH:mm") + "-" +
+                                  ((HttpRequestStat)req).DateEnd.ToString("dd.MM.yyyy HH:mm") + ": " +
                                   ((HttpRequestStat)req).CntRows + " запит(ів)"
                               : string.Empty)}" +
                           $"</td>\n" +
@@ -120,6 +133,7 @@ namespace HttpServApp.Builder
     "<!DOCTYPE html>\n" +
     "<html>\n" +
         "\t<head>\n" +
+            "\t\t<title>Дані статистики</title>\n" +
             "\t\t<meta charset=\"utf-8\" />\n" +
             "\t\t<link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\"\n" +
             "\t\tintegrity=\"sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC\" crossorigin=\"anonymous\"/>\n" +
