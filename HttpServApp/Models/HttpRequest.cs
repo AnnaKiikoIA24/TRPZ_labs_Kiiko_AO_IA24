@@ -1,6 +1,5 @@
 ﻿using HttpServApp.State;
 using System.Net.Sockets;
-using System.Text;
 
 namespace HttpServApp.Models
 {
@@ -11,6 +10,7 @@ namespace HttpServApp.Models
     BAD_REQUEST = 400,
     UNAUTHORIZED = 401,
     NOT_FOUND = 404,
+    NOT_ALLOWED = 405,
     BAD_SERVER = 500,
     STATISTIC = 600
   }
@@ -30,7 +30,7 @@ namespace HttpServApp.Models
     // Посилання на поточний стан об'єкта.
     private IState? state = null;
 
-    // Посилання на репозиторій, де зберігається об'єкт
+    // Посилання на репозиторiй, де зберiгається об'єкт
     public Repository Repository { get; }
 
     public long IdRequest { get; set; } = -1;
@@ -41,8 +41,8 @@ namespace HttpServApp.Models
     public string? Method { get; }
     public string IpAddress { get; } = string.Empty;
 
-    // Http-статус відповіді, початково статус запиту ініціалізується значенням PROCESSING,
-    // відповідь не сформована і не відправлена
+    // Http-статус вiдповiдi, початково статус запиту iнiцiалiзується значенням PROCESSING,
+    // вiдповiдь не сформована i не вiдправлена
     public StatusEnum Status { get; set; } = StatusEnum.PROCESSING;
     public string? StatusStr { get => Status.ToString(); }
 
@@ -57,7 +57,7 @@ namespace HttpServApp.Models
         string? version, string? method, string ipAddress,
         string? contentType, string? message = "", long idRequest = -1)
     {
-      // Заповнили всі поля
+      // Заповнили всi поля
       DateTimeRequest = dateTimeRequest;
       Version = version;
       Method = method;
@@ -69,40 +69,26 @@ namespace HttpServApp.Models
       Repository = repository;
     }
 
-    protected string CreateHeader()
-    {
-      return $"HTTP/{Version ?? "1.1"} {Enum.Format(typeof(StatusEnum), Status, "d")} {Status} " +
-          //$"\nContent-Type:{ContentTypeRequest ?? "text/html"};charset=UTF-8;" +
-          $"\nContent-Type:{ContentTypeRequest ?? "text/html"};" +
-          $"\nContent-Length:{Response?.ContentLength ?? 0}" +
-          $"\nConnection: close\n\n";
-    }
-
-    // Відправка відповіді клієнту
-    public void SendResponse(Socket socket, string htmlResponse)
+    // Вiдправка вiдповiдi клiєнту
+    public void SendResponseByte(Socket socket, byte[] data)
     {
       if (Response == null) return;
       try
       {
         if (socket != null)
         {
-          // Відправляємо відповідь як масив байт в сокеті
-          if (ContentTypeRequest.IndexOf("image") != -1)
-            socket.Send(Encoding.ASCII.GetBytes(htmlResponse));
-          else
-            socket.Send(Encoding.UTF8.GetBytes(htmlResponse));
-          // socket.Send(Convert.FromBase64String(htmlResponse));
-          // Встановлюємо ознаку відправленої відповіді 
+            socket.Send(data);
+          // Встановлюємо ознаку вiдправленої вiдповiдi 
           Response.StatusSend = 1;
         }
         else
         {
-          Console.WriteLine("Сформована відповідь не відправлена: Socket=null");
+          Console.WriteLine("Сформована вiдповiдь не вiдправлена: Socket=null");
         }
       }
       catch (Exception exc)
       {
-        Console.WriteLine($"Сформована відповідь не відправлена: {exc.Message}");
+        Console.WriteLine($"Сформована вiдповiдь не вiдправлена: {exc.Message}");
       }
       finally
       {
@@ -111,7 +97,7 @@ namespace HttpServApp.Models
       }
     }
 
-    // Метод дозволяє змінювати стан об'єкта під час виконання
+    // Метод дозволяє змiнювати стан об'єкта пiд час виконання
     public void TransitionTo(IState state, Socket socket)
     {
       Console.WriteLine($"HttpRequest state: Transition to {state.GetType().Name}.");

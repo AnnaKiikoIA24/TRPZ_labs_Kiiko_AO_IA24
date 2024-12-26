@@ -7,7 +7,7 @@ namespace HttpServApp.Factory
   internal class CreatorRequestInvalid : ICreatorRequest
   {
     /// <summary>
-    /// Повертає об'єкт не валідного запиту 
+    /// Повертає об'єкт не валiдного запиту 
     /// </summary>
     /// <param name="validator"></param>
     /// <param name="repository"></param>

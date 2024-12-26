@@ -7,7 +7,7 @@ namespace HttpServApp
 {
   partial class ServiceHttp : ServiceBase
   {
-    // Ознака наявності аргументів: якщо true, то в режимі консольного застосунку (debug configuration)
+    // Ознака наявностi аргументiв: якщо true, то в режимi консольного застосунку (debug configuration)
     bool isConsoleMode = false;
 
     public ServiceHttp()
@@ -21,8 +21,8 @@ namespace HttpServApp
       isConsoleMode = args.Contains("run=1");
 
       Listener listener = new Listener();
-      // Створюємо об'єкт посередника, який буде координувати дії з обробки даних від Http-клієнта
-      // Змінюючи посередника, можна змінити принцип обробки даних (у багатопотоковому режимі чи в однопотоковому (подієвому) режимах)
+      // Створюємо об'єкт посередника, який буде координувати дiї з обробки даних вiд Http-клiєнта
+      // Змiнюючи посередника, можна змiнити принцип обробки даних (у багатопотоковому режимi чи в однопотоковому (подiєвому) режимах)
       _ = new MediatorProcessing(
             listener, new Repository(),
             new MultiThreadProcessing(), new SingleThreadProcessing());
@@ -31,21 +31,21 @@ namespace HttpServApp
 
     protected override void OnStop()
     {
-      // TODO: Код, що виконує підготовку до зупинки служби.
+      // TODO: Код, що виконує пiдготовку до зупинки служби.
       if (isConsoleMode)
         Environment.Exit(1);
       else
         base.OnStop();
     }
 
-    // запуск через консоль (для відладки debug)
+    // запуск через консоль (для вiдладки debug)
     public void StartAsProgram(string[] args)
     {
       OnStart(args);
     }
 
 
-    // зупинка через консоль (для відладки)
+    // зупинка через консоль (для вiдладки)
     public void StopAsProgram()
     {
       OnStop();

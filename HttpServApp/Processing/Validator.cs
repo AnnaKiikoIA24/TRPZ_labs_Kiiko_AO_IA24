@@ -1,5 +1,4 @@
-﻿using HttpServApp.Models;
-using System.Globalization;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -29,7 +28,8 @@ namespace HttpServApp.Processing
       // Зчитуємо данi
       try
       {
-        socket.ReceiveTimeout = 1000;
+        //socket.ReceiveTimeout = 1000;
+
         int bytes = socket.Receive(bufferBytes, bufferBytes.Length, SocketFlags.None);
         string strReceiveRequest = Encoding.UTF8.GetString(bufferBytes, 0, bytes);
         // Цикл, поки не досягли закiнчення масиву
@@ -38,24 +38,26 @@ namespace HttpServApp.Processing
           bytes = socket.Receive(bufferBytes, bufferBytes.Length, SocketFlags.None);
           strReceiveRequest += Encoding.UTF8.GetString(bufferBytes, 0, bytes);
         }
+
+        Console.WriteLine($"==== Змiст запиту ({socket.RemoteEndPoint}):\n{strReceiveRequest}");
         return strReceiveRequest;
       }
       catch (Exception ex)
       {
-        Console.WriteLine($"GetStringRequest exception: {ex.Message}");
-        return "";
+        //Console.WriteLine($"==== GetStringRequest exception ({socket.RemoteEndPoint}):\n{ex.Message}");
+        return string.Empty;
       }
     }
 
     /// <summary>
-    /// Повертає адресу Http-клієнта
+    /// Повертає адресу Http-клiєнта
     /// </summary>
     /// <returns></returns>
     public string GetRemoteEndPoint() =>
-      socket.RemoteEndPoint?.ToString() ?? "";
+      socket.RemoteEndPoint?.ToString() ?? string.Empty;
 
-    // Метод, що повертає дані (частина строки), що відповідає шаблону пошуку
-    // Якщо строка не відповідає шаблону, то exception
+    // Метод, що повертає данi (частина строки), що вiдповiдає шаблону пошуку
+    // Якщо строка не вiдповiдає шаблону, то exception
     private string ParseValue(string pattern, string exceptionStr)
     {
       Match match = Regex.Match(StrReceiveRequest, pattern,
@@ -71,7 +73,7 @@ namespace HttpServApp.Processing
     /// </summary>
     /// <returns></returns>
     public string GetFileRequest() {
-      // Якщо виклик default-сторінки, то повертаємо стартову сторінку index.html
+      // Якщо виклик default-сторiнки, то повертаємо стартову сторiнку index.html
       string pattern = @"\s/\sHTTP";
       Match match = Regex.Match(StrReceiveRequest, pattern, RegexOptions.Compiled);
       if (match != Match.Empty)
@@ -85,10 +87,7 @@ namespace HttpServApp.Processing
     /// <returns></returns>
     public string GetTypeRequest()
     {
-      if (StrReceiveRequest?.IndexOf("favicon") != -1)
-        throw new WebException("Запит iконки favicon, ignore", WebExceptionStatus.ReceiveFailure);
-
-      // Якщо знайдено ім'я файлу, вважаємо, що це запит сторінки (за замовчуванням)
+      // Якщо знайдено iм'я файлу, вважаємо, що це запит сторiнки (за замовчуванням)
       if (GetFileRequest() != string.Empty)
         return "page";
       return ParseValue(@"type_request=([^\s&]+)", "Не визначений тип запиту").ToLower();
@@ -116,12 +115,12 @@ namespace HttpServApp.Processing
         ParseValue(@"Accept:\s([^,\r\n]+)[,|\r|\n]", "Не визначений тип змiсту Http-запиту").ToLower();
 
     /// <summary>
-    /// Повертає змiст ключа авторизації (використовується для запиту статистики)
+    /// Повертає змiст ключа авторизацiї (використовується для запиту статистики)
     /// </summary>
     /// <returns></returns>
     public string GetKeyAuthorization() =>
-        //ParseValue(@"key-authorization:\s([^\s\r\n]+)[;|\r|\n]", "Відсутній заголовок ключа авторизації");
-      ParseValue(@"key-authorization=([^\s\r\n]+)[;|\r|\n]", "Відсутній заголовок ключа авторизації");
+        //ParseValue(@"key-authorization:\s([^\s\r\n]+)[;|\r|\n]", "Вiдсутнiй заголовок ключа авторизацiї");
+      ParseValue(@"key-authorization=([^\s\r\n]+)[;|\r|\n]", "Вiдсутнiй заголовок ключа авторизацiї");
 
     /// <summary>
     /// Повертає дату/час початку перiода

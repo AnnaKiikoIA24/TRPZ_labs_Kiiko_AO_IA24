@@ -1,0 +1,21 @@
+body {
+	background-image: url("background.png");
+    font-size: 20px;
+}
+p {
+   text-align: center;
+   font-size: 26px;
+   color: mediumblue;
+}
+span {
+    color: darkred;
+    font-size: 24px;
+    font-weight: 700;
+}
+button {
+    display: block;
+    font-size: inherit;
+    margin: auto;
+    padding: 0.6em;
+}
+  

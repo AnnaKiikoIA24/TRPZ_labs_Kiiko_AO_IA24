@@ -3,9 +3,9 @@
   internal class HttpResponse
   {
     public DateTime DateTimeResponse { get; }
-    // Початкове значення = 0: відповідь не відправлена
+    // Початкове значення = 0: вiдповiдь не вiдправлена
     public byte StatusSend { get; set; } = 0;
-    // Довжина строки-відповіді
+    // Довжина строки-вiдповiдi
     public int ContentLength { get; } = 0;
     public HttpResponse() { }
 

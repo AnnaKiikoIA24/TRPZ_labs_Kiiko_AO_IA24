@@ -1,11 +1,13 @@
-﻿namespace HttpServApp.Models
+﻿using System.Web;
+
+namespace HttpServApp.Models
 {
   /// <summary>
-  /// Цей клас містить інформацію про запит Web-сторінки та відповідь 
+  /// Цей клас мiстить iнформацiю про запит Web-сторiнки та вiдповiдь 
   /// </summary>
   internal class HttpRequestPage : HttpRequest
   {
-    public string Path { get; } = string.Empty;
+    public string Path { get; set; } = string.Empty;
     public int ContentLength { get; }
     public List<TagTemplate> Tags { get; set; } = new List<TagTemplate>();
 
@@ -16,7 +18,7 @@
         string path, string? message = null,long idRequest = -1)
         : base(repository, dateTimeRequest, version, method, ipAddress, contentType, message, idRequest)
     {
-      Path = path;
+      Path = HttpUtility.UrlDecode(path);
       TypeRequest = TypeRequestEnum.СТОРІНКА;
     }
   }
