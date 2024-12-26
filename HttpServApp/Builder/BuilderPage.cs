@@ -51,11 +51,13 @@ namespace HttpServApp.Builder
         // Формуємо шлях до файлу: частина строки вiд початку до першого символу "*"
         string folderPath = httpRequestPage.Path.Substring(0, indexOfStarSymbol);
         
-        if (!Directory.Exists(folderPath))
+        if (!Directory.Exists(
+          Path.Combine(Configuration.ResourcePath ?? "C:", folderPath)))
         {
           httpRequestPage.Status = StatusEnum.NOT_FOUND;
           httpRequestPage.Message =
             $"Папка <b>'{folderPath}'</b> не знайдена на серверi";
+          return Encoding.UTF8.GetBytes($"{(int)httpRequestPage.Status} {httpRequestPage.Status}");
         }
 
         // Формуємо iм'я файлу: частина строки вiд символу "*" до кiнця
