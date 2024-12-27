@@ -9,7 +9,7 @@ namespace HttpServApp.Factory
   {
 
     /// <summary>
-    /// Повертає об'єкт запиту статистики за період
+    /// Повертає об'єкт запиту статистики за перiод
     /// </summary>
     /// <param name="validator"></param>
     /// <param name="repository"></param>

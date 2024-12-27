@@ -3,14 +3,14 @@ using System.ServiceProcess;
 
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
-// Якщо запуск в режимі служби
+// Якщо запуск в режимi служби
 if (!args.Contains("run=1"))
 {
   ServiceHttp serviceHttp = new ServiceHttp();
   ServiceBase.Run(serviceHttp);
 
 }
-// Якщо запуск в режимі консольного застосунку (для відладки)
+// Якщо запуск в режимi консольного застосунку (для вiдладки)
 else
 {
   ServiceHttp conRun = new ServiceHttp();

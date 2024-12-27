@@ -4,7 +4,7 @@ using System.Net.Sockets;
 namespace HttpServApp.Processing
 {
   /// <summary>
-  /// Клас обробки запиту в багатопотоковому режимі
+  /// Клас обробки запиту в багатопотоковому режимi
   /// </summary>
   internal class MultiThreadProcessing: RequestProcessing
   {
@@ -12,7 +12,7 @@ namespace HttpServApp.Processing
     {
       // Створення потоку обробки даних
       Thread workThread = new Thread(args => DoWork(args as ProcessingArgs));
-      // Старт потоку з передачою параметрів
+      // Старт потоку з передачою параметрiв
       workThread.Start(
         new ProcessingArgs() 
         { 

@@ -4,7 +4,7 @@ using System.Net.Sockets;
 namespace HttpServApp.Processing
 {
   /// <summary>
-  /// Клас обробки запиту в однопотоковому режимі (в основному потоці)
+  /// Клас обробки запиту в однопотоковому режимi (в основному потоцi)
   /// </summary>
   internal class SingleThreadProcessing: RequestProcessing
   {

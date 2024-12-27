@@ -18,33 +18,30 @@ namespace HttpServApp.Processing
 
     /// <summary>
     /// Метод, що виконує обробку даних запиту 
-    /// (він є реентерабельним, тобто потокобезпечним, не залежить від стану об'єкта)
+    /// (вiн є реентерабельним, тобто потокобезпечним, не залежить вiд стану об'єкта)
     /// </summary>
     protected virtual void DoWork(ProcessingArgs threadArgs)
     {
       Socket socket = threadArgs.Socket;
       Validator validator = new Validator(socket);
-      // Об'єкт, метод якого створює запит необхідного типу
+      // Об'єкт, метод якого створює запит необхiдного типу
       ICreatorRequest? creator;
       try
       {
-        // Аналізуємо строку запиту
+        // Аналiзуємо строку запиту
         if (string.IsNullOrEmpty(validator.StrReceiveRequest))
         {
-          Console.WriteLine("================ Строка запиту пуста. Подальша обробка не можлива.");
           socket.Close();
           socket.Dispose();
           return;
         }
-
-        Console.WriteLine($"================ Змiст запиту:\n{validator.StrReceiveRequest}");
 
         // Визначаємо тип запиту
         string typeRequest = validator.GetTypeRequest();
 
         switch (typeRequest)
         {
-          // Запит сторінки
+          // Запит сторiнки
           case "page":
             {
               creator = new CreatorRequestPage();
@@ -61,17 +58,16 @@ namespace HttpServApp.Processing
 
         }
       }
-      catch (WebException webExc)
+      catch (WebException)
       {
-        // Запит favicon ігноруємо
-        if (webExc.Status == WebExceptionStatus.ReceiveFailure)
-          return;
         creator = new CreatorRequestInvalid();
       }
 
       if (creator != null)
       {
+        // За допомогою фабрики створюємо tuple, що мiстить об'єкт запиту та його початковий стан.
         (HttpRequest httpRequest, IState startState) = creator.FactoryMethod(validator, threadArgs.Repository);
+        // Запускаємо ланцюжок переходу станiв об'єкту запит
         httpRequest.TransitionTo(startState, socket);
       }
 

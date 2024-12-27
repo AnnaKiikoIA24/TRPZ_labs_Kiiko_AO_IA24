@@ -6,7 +6,7 @@ using System.Net.Sockets;
 namespace HttpServApp.Mediator
 {
   /// <summary>
-  /// Посередник обробки запиту від Http-клієнта
+  /// Посередник обробки запиту вiд Http-клiєнта
   /// </summary>
   internal class MediatorProcessing: IMediator
   {
@@ -16,7 +16,7 @@ namespace HttpServApp.Mediator
     private readonly SingleThreadProcessing singleThreadProcessing;
 
     /// <summary>
-    /// Конструктор об'єкта, у параметрах задані всі об'єкти-колеги, що взаємодіють з медіатором
+    /// Конструктор об'єкта, у параметрах заданi всi об'єкти-колеги, що взаємодiють з медiатором
     /// </summary>
     /// <param name="listener"></param>
     /// <param name="repository"></param>
@@ -40,25 +40,25 @@ namespace HttpServApp.Mediator
     }
 
     /// <summary>
-    /// Метод, що використовується компонентами для сповіщення посередника про різні події.
+    /// Метод, що використовується компонентами для сповiщення посередника про рiзнi подiї.
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="target"></param>
     public void Notify(object sender, object target)
     {
-      // Якщо повідомлення надійшло від Listener
+      // Якщо повiдомлення надiйшло вiд Listener
       if (sender is Listener)
       {
-        // як цільовий об'єкт переданий Socket
+        // як цiльовий об'єкт переданий Socket
         if (target is Socket clientSocket)
         {
-          // Зчитуємо конфігурацію застосунку.
-          // Якщо параметр багатопотоковості встановлений, то для обробки запиту використовуємо об'єкт типу MultiThreadProcessing,
-          // що запускає окремий потік обробки запиту
+          // Зчитуємо конфiгурацiю застосунку.
+          // Якщо параметр багатопотоковостi встановлений, то для обробки запиту використовуємо об'єкт типу MultiThreadProcessing,
+          // що запускає окремий потiк обробки запиту
           if (Configuration.MultiThread)
             multiThreadProcessing.Process(repository, clientSocket);
-          // Якщо параметр багатопотоковості НЕ встановлений, то для обробки запиту використовуємо об'єкт типу SingleThreadProcessing,
-          // що виконує обробку запиту в основному потоці
+          // Якщо параметр багатопотоковостi НЕ встановлений, то для обробки запиту використовуємо об'єкт типу SingleThreadProcessing,
+          // що виконує обробку запиту в основному потоцi
           else
             singleThreadProcessing.Process(repository, clientSocket);
         }
@@ -68,7 +68,7 @@ namespace HttpServApp.Mediator
         }
 
       }
-      // Якщо сповіщення прийшло від Repository, просто виводимо цільове повідомлення
+      // Якщо сповiщення прийшло вiд Repository, просто виводимо цiльове повiдомлення
       else if (sender is Repository) 
       {
           Console.WriteLine(target.ToString());

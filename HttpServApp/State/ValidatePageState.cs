@@ -2,26 +2,28 @@
 using HttpServApp.Models;
 using System.Net.Sockets;
 
+
 namespace HttpServApp.State
 {
-  // Стан після валідації: валідний запит даних Web-сторінки
+  // Стан пiсля валiдацiї: валiдний запит даних Web-сторiнки
   internal class ValidatePageState : IState
   {
     public void ProcessingHandler(HttpRequest httpRequest, Socket socket)
     {
-      // Будуємо відповідь за допомогою методів інтерфейсу IBuilder
+      // Будуємо вiдповiдь за допомогою методiв iнтерфейсу IBuilder
       IBuilder builder = new BuilderPage(httpRequest);
-      string htmlResponse =
-          builder.BuildVersion() +
-          builder.BuildStatus() +
-          builder.BuildHeaders() +
-          builder.BuildContentBody();
+      byte[] sendBytes = [
+        .. builder.BuildVersion(), 
+        .. builder.BuildStatus(), 
+        .. builder.BuildHeaders(), 
+        .. builder.BuildContentBody()
+       ];
 
-      // Відсилаємо відповідь клієнту
-      httpRequest.SendResponse(socket, htmlResponse);
+      // Вiдсилаємо вiдповiдь клiєнту
+      httpRequest.SendResponseByte(socket, sendBytes);
       Console.WriteLine($"HttpRequest state: ValidatePageState");
 
-      // Перехід у новий стан: після відправки відповіді клієнту
+      // Перехiд у новий стан: пiсля вiдправки вiдповiдi клiєнту
       httpRequest.TransitionTo(new SendedState(), socket);
     }
   }

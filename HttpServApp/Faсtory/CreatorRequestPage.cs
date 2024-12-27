@@ -8,7 +8,7 @@ namespace HttpServApp.Factory
   internal class CreatorRequestPage : ICreatorRequest
   {
     /// <summary>
-    /// Повертає об'єкт запиту Web-сторінки
+    /// Повертає об'єкт запиту Web-сторiнки
     /// </summary>
     /// <param name="validator"></param>
     /// <param name="repository"></param>
@@ -21,7 +21,7 @@ namespace HttpServApp.Factory
             repository, DateTime.Now,
             validator.GetVersionRequest(), validator.GetMethodRequest(),
             validator.GetRemoteEndPoint(), validator.GetContentTypeRequest(),
-            Path.Combine(Configuration.ResourcePath ?? "C:\\", validator.GetFileRequest()));
+            validator.GetFileRequest());
 
         Console.WriteLine($"Processing: запит сторiнки {httpRequest.Path}!");
 

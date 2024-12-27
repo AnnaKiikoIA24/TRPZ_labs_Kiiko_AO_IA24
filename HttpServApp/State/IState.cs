@@ -3,7 +3,7 @@ using System.Net.Sockets;
 
 namespace HttpServApp.State
 {
-  // Інтерфейс, що відповідає за стан об'єкта HttpRequest
+  // iнтерфейс, що вiдповiдає за стан об'єкта HttpRequest
   interface IState
   {
     public void ProcessingHandler(HttpRequest httpRequest, Socket socket);

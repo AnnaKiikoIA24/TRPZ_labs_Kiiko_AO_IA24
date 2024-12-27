@@ -5,7 +5,7 @@ using HttpServApp.State;
 namespace HttpServApp.Factory
 {
   /// <summary>
-  /// Інтерфейс ICreatorRequest визначає методи 
+  /// iнтерфейс ICreatorRequest визначає методи 
   /// створення об'єкту запиту та його початкового стану
   /// </summary>
   internal interface ICreatorRequest

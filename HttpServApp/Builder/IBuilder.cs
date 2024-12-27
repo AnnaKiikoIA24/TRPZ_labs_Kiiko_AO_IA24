@@ -1,33 +1,33 @@
 ﻿namespace HttpServApp.Builder
 {
   /// <summary>
-  /// Інтерфейс IBuilder визначає всі можливі кроки з формування HTTP-відповіді
+  /// iнтерфейс IBuilder визначає всi можливi кроки з формування HTTP-вiдповiдi
   /// </summary>
   internal interface IBuilder
   {
     /// <summary>
-    /// Версія протоколу
+    /// Версiя протоколу
     /// </summary>
     /// <returns></returns>
-    public string BuildVersion();
+    public byte[] BuildVersion();
 
     /// <summary>
     /// Статус виконання запиту
     /// </summary>
     /// <returns></returns>
-    public string BuildStatus();
+    public byte[] BuildStatus();
 
     /// <summary>
-    /// Заголовки відповіді
+    /// Заголовки вiдповiдi
     /// </summary>
     /// <returns></returns>
-    public string BuildHeaders();
+    public byte[] BuildHeaders();
 
     /// <summary>
-    /// Зміст (тіло) відповіді
+    /// Змiст (тiло) вiдповiдi
     /// </summary>
     /// <returns></returns>
-    public string BuildContentBody();
+    public byte[] BuildContentBody();
 
   }
 }

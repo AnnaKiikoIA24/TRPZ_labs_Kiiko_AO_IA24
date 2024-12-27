@@ -1,55 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="HttpServApp.Mediator.MediatorProcessing">
-    <Position X="3.25" Y="5" Width="1.5" />
+  <Class Name="HttpServApp.Models.HttpResponse">
+    <Position X="4.5" Y="8.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EAAAAAAAAAACAAAAAAAAAAAAAIAAAABAAAAABAAAAAA=</HashCode>
-      <FileName>Mediator\MediatorProcessing.cs</FileName>
+      <HashCode>AAAAAAAAAAAAQAAAAAAAAAAAAABAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\HttpResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HttpServApp.Composite.ResourceBase">
+    <Position X="2.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAABAAAAgCAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Composite\ResourceBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HttpServApp.Composite.ResourceFile">
+    <Position X="5.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgCAAEAAAEAAAAAAAAA=</HashCode>
+      <FileName>Composite\ResourceFile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HttpServApp.Composite.ResourceFolder">
+    <Position X="2.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAEAAAAAAAAABAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Composite\ResourceFolder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HttpServApp.Builder.BuilderPage">
+    <Position X="0.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAACAAAAAAAAAAAAAABAAAAAABAAAAAAAAIAAAA=</HashCode>
+      <FileName>Builder\BuilderPage.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="HttpServApp.Processing.MultiThreadProcessing">
-    <Position X="8.25" Y="2.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Processing\MultiThreadProcessing.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="HttpServApp.Processing.SingleThreadProcessing">
-    <Position X="8.25" Y="4.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Processing\SingleThreadProcessing.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="HttpServApp.Listener">
-    <Position X="3.25" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAABAAAAAAAEACAAAQAAAIAAAAAAAAAA=</HashCode>
-      <FileName>Listener.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="HttpServApp.Processing.RequestProcessing">
-    <Position X="5.75" Y="3.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAQAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Processing\RequestProcessing.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="HttpServApp.Models.Repository">
-    <Position X="0.75" Y="2.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>gAABAAAEAAAAAAAAAAAAAAAACAAAAAAAAACCEBAAAAI=</HashCode>
-      <FileName>Models\Repository.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Interface Name="HttpServApp.Mediator.IMediator">
-    <Position X="3.25" Y="3.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
-      <FileName>Mediator\IMediator.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

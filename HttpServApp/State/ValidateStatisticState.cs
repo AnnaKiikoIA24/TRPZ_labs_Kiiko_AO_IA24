@@ -4,24 +4,25 @@ using System.Net.Sockets;
 
 namespace HttpServApp.State
 {
-  // Стан після валідації: валідний запит статистичних даних
+  // Стан пiсля валiдацiї: валiдний запит статистичних даних
   internal class ValidateStatisticState : IState
   {
     public void ProcessingHandler(HttpRequest httpRequest, Socket socket)
     {
-      // Будуємо відповідь за допомогою методів інтерфейсу IBuilder
+      // Будуємо вiдповiдь за допомогою методiв iнтерфейсу IBuilder
       IBuilder builder = new BuilderStat(httpRequest);
-      string htmlResponse =
-          builder.BuildVersion() +
-          builder.BuildStatus() +
-          builder.BuildHeaders() +
-          builder.BuildContentBody();
+      byte[] sendBytes = [
+        .. builder.BuildVersion(),
+        .. builder.BuildStatus(),
+        .. builder.BuildHeaders(),
+        .. builder.BuildContentBody()
+       ];
 
-      // Відсилаємо відповідь клієнту
-      httpRequest.SendResponse(socket, htmlResponse);
+      // Вiдсилаємо вiдповiдь клiєнту
+      httpRequest.SendResponseByte(socket, sendBytes);
       Console.WriteLine($"HttpRequest state: ValidateStatisticState");
 
-      // Перехід у новий стан: після відправки відповіді клієнту
+      // Перехiд у новий стан: пiсля вiдправки вiдповiдi клiєнту
       httpRequest.TransitionTo(new SendedState(), socket);
 
     }

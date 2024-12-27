@@ -8,7 +8,7 @@ namespace HttpServApp
 {
   internal class Listener
   {
-    // Ознака запуску потока прослуховування вхідних підключень
+    // Ознака запуску потока прослуховування вхiдних пiдключень
     private bool isRunning = false;
     // Об'єкт потоку
     private readonly Thread listenerThread;
@@ -32,36 +32,41 @@ namespace HttpServApp
 
     public void Stop()
     {
-      // Зупиняємо потік прослуховування
+      // Зупиняємо потiк прослуховування
       isRunning = false;
     }
 
     protected void DoListen()
     {
-      // Сокет для очікування надходження вхідних з'єднань
+      // Сокет для очiкування надходження вхiдних з'єднань
       Socket listenSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
       try
       {
 
-        // Створення локальної точки для прослуховування вхідних підключень
+        // Створення локальної точки для прослуховування вхiдних пiдключень
         IPEndPoint ipPoint = new IPEndPoint(IPAddress.Any, Configuration.Port);
         // Прив'язка сокету до локальної точки 
         listenSocket.Bind(ipPoint);
-        // Запуск прослуховування вхідних підключень
-        // Configuration.BackLog - кількість вхідних підключень у черзі на обробку
+        // Запуск прослуховування вхiдних пiдключень
+        // Configuration.BackLog - кiлькiсть вхiдних пiдключень у черзi на обробку
         listenSocket.Listen(Configuration.BackLog);
         Console.WriteLine("Сервер запущений. Очiкування пiдключень...");
 
         while (isRunning)
         {
-          // Очікуємо спробу з'єднання,
-          // після з'єднання створюється новий сокет для його обробки (вхідне підключення)
+          // Очiкуємо спробу з'єднання,
+          // пiсля з'єднання створюється новий сокет для його обробки (вхiдне пiдключення)
           Socket responseSocket = listenSocket.Accept();
-          Console.WriteLine($"\n================ Адреса пiдключеного клiєнта: {responseSocket.RemoteEndPoint}");
           if (responseSocket.Connected)
           {
-            // Відправка сповіщення медіатору про надходження нового запиту від клієнта 
+            Console.WriteLine($"\n==== Адреса пiдключеного клiєнта: {responseSocket.RemoteEndPoint}");
+            // Вiдправка сповiщення медiатору про надходження нового запиту вiд клiєнта 
             Mediator?.Notify(this, responseSocket);
+          }
+          else
+          {
+            responseSocket.Close();
+            responseSocket.Dispose();
           }
         }
       }
