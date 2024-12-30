@@ -17,5 +17,12 @@ namespace HttpServApp.Models
 
     // Ключ доступа адмiнiстратора до даних статистики
     public static string? KeyAuthorization { get; } = Convert.ToString(ConfigurationManager.AppSettings["key_authorization"]);
+
+    // IP-адреса або ім'я віддаленого резервного серверу, до якого виконується запит сторінки, якщо вона не знайдена на поточному сервері
+    public static string? RemoteHost { get; } = Convert.ToString(ConfigurationManager.AppSettings["remote_host"]);
+
+    // Порт віддаленого резервного серверу, до якого виконується запит сторінки, якщо вона не знайдена на поточному сервері
+    public static int? RemotePort { get; } = Convert.ToInt32(ConfigurationManager.AppSettings["remote_port"]);
+
   }
 }

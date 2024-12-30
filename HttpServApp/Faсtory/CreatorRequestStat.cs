@@ -3,25 +3,22 @@ using HttpServApp.Processing;
 using HttpServApp.State;
 using System.Net;
 
-namespace HttpServApp.Factory
+namespace HttpServApp.Faсtory
 {
+  /// <summary>
+  /// Клас CreatorRequestStat реалізує інтерфейс ICreatorRequest для створення 
+  /// об'єкту класу HttpRequestStat (запит статистики за перiод) та його початкового стану ValidateStatisticState
+  /// </summary>
   internal class CreatorRequestStat : ICreatorRequest
   {
-
-    /// <summary>
-    /// Повертає об'єкт запиту статистики за перiод
-    /// </summary>
-    /// <param name="validator"></param>
-    /// <param name="repository"></param>
-    /// <returns></returns>
     public (HttpRequest, IState) FactoryMethod(Validator validator, Repository repository)
     {
-      try 
-      { 
+      try
+      {
         HttpRequestStat httpRequest = new HttpRequestStat(
-            repository, DateTime.Now,
+            repository, validator.GetStringRequest(), DateTime.Now,
             validator.GetVersionRequest(), validator.GetMethodRequest(),
-            validator.GetRemoteEndPoint(), validator.GetContentTypeRequest(),
+            validator.RemoteEndPoint, validator.LocalEndPoint, validator.GetContentTypeRequest(),
             validator.GetDateBegRequest(), validator.GetDateEndRequest(),
             validator.GetKeyAuthorization());
         Console.WriteLine($"Processing: запит статистики за перiод " +
@@ -33,16 +30,16 @@ namespace HttpServApp.Factory
       catch (WebException webE)
       {
         HttpRequestInvalid httpRequest = new HttpRequestInvalid(
-          repository, DateTime.Now,
-          validator.GetRemoteEndPoint(), $"{webE.Message} статус={webE.Status}");
-        Console.WriteLine($"CreatorRequestPage WebException: {webE.Message} статус={webE.Status}");
+          repository, validator.GetStringRequest(), DateTime.Now,
+          validator.RemoteEndPoint, validator.LocalEndPoint, $"{webE.Message}");
+        Console.WriteLine($"CreatorRequestPage WebException: {webE.Message}");
         return (httpRequest, new InvalidState());
       }
       catch (Exception exc)
       {
         HttpRequestInvalid httpRequest = new HttpRequestInvalid(
-          repository, DateTime.Now,
-          validator.GetRemoteEndPoint(), exc.Message);
+          repository, validator.GetStringRequest(), DateTime.Now,
+          validator.RemoteEndPoint, validator.LocalEndPoint, exc.Message);
         Console.WriteLine($"CreatorRequestPage Exception: {exc.Message}");
         return (httpRequest, new InvalidState());
       }

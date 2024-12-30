@@ -1,66 +1,50 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Net;
-using System.Net.Sockets;
-using System.Text;
+﻿using System.Net;
 using System.Text.RegularExpressions;
 
 namespace HttpServApp.Processing
 {
   /// <summary>
-  /// Клас парсингу даних Http-запиту 
+  /// Клас парсингу та валыдацыъ даних Http-запиту 
   /// </summary>
   internal class Validator
   {
-    private readonly Socket socket;
-    public string StrReceiveRequest { get; }  = string.Empty;
+    private readonly string stringRequest = string.Empty;
+    private readonly EndPoint? localEndPoint;
+    private readonly EndPoint? remoteEndPoint;
 
-    public Validator(Socket socket)
+    public Validator(string stringRequest, EndPoint? localEndPoint, EndPoint? remoteEndPoint)
     {
-      this.socket = socket ?? throw new ArgumentNullException(nameof(socket));
-      StrReceiveRequest = GetStringRequest();
+      // Строка запиту
+      this.stringRequest = stringRequest;
+      // Адреса серверу (локальна endpoint для socket)
+      this.localEndPoint = localEndPoint;
+      // Адреса клієнта (віддалена endpoint для socket)
+      this.remoteEndPoint = remoteEndPoint;
     }
 
-    // Отримання строки запиту з потоку байтiв у сокетi
-    private string GetStringRequest()
-    {
-      // Встановлюємо розмiр блоку даних
-      byte[] bufferBytes = new byte[1024];
-      // Зчитуємо данi
-      try
-      {
-        //socket.ReceiveTimeout = 1000;
+    /// <summary>
+    /// Повертає строку запиту
+    /// </summary>
+    /// <returns></returns>
+    public string GetStringRequest() => stringRequest;
 
-        int bytes = socket.Receive(bufferBytes, bufferBytes.Length, SocketFlags.None);
-        string strReceiveRequest = Encoding.UTF8.GetString(bufferBytes, 0, bytes);
-        // Цикл, поки не досягли закiнчення масиву
-        while (socket.Available > 0)
-        {
-          bytes = socket.Receive(bufferBytes, bufferBytes.Length, SocketFlags.None);
-          strReceiveRequest += Encoding.UTF8.GetString(bufferBytes, 0, bytes);
-        }
-
-        Console.WriteLine($"==== Змiст запиту ({socket.RemoteEndPoint}):\n{strReceiveRequest}");
-        return strReceiveRequest;
-      }
-      catch (Exception ex)
-      {
-        //Console.WriteLine($"==== GetStringRequest exception ({socket.RemoteEndPoint}):\n{ex.Message}");
-        return string.Empty;
-      }
-    }
+    /// <summary>
+    /// Повертає адресу Http-сервера (це важливо, якщо працює декілька серверів за архітектурою p2p)
+    /// </summary>
+    /// <returns></returns>
+    public string LocalEndPoint => localEndPoint?.ToString() ?? string.Empty;
 
     /// <summary>
     /// Повертає адресу Http-клiєнта
     /// </summary>
     /// <returns></returns>
-    public string GetRemoteEndPoint() =>
-      socket.RemoteEndPoint?.ToString() ?? string.Empty;
+    public string RemoteEndPoint => remoteEndPoint?.ToString() ?? string.Empty;
 
-    // Метод, що повертає данi (частина строки), що вiдповiдає шаблону пошуку
+    // Внутрішній метод, що повертає данi (частину строки), що вiдповiдає шаблону пошуку
     // Якщо строка не вiдповiдає шаблону, то exception
     private string ParseValue(string pattern, string exceptionStr)
     {
-      Match match = Regex.Match(StrReceiveRequest, pattern,
+      Match match = Regex.Match(stringRequest, pattern,
           RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace);
       if (match != Match.Empty && match.Groups.Count > 1)
         return match.Groups[1].Value;
@@ -75,7 +59,7 @@ namespace HttpServApp.Processing
     public string GetFileRequest() {
       // Якщо виклик default-сторiнки, то повертаємо стартову сторiнку index.html
       string pattern = @"\s/\sHTTP";
-      Match match = Regex.Match(StrReceiveRequest, pattern, RegexOptions.Compiled);
+      Match match = Regex.Match(stringRequest, pattern, RegexOptions.Compiled);
       if (match != Match.Empty)
         return "index.html";
 

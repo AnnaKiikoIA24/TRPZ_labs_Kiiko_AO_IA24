@@ -13,9 +13,9 @@ namespace HttpServApp.Builder
     {
       httpRequestInvalid = httpRequest as HttpRequestInvalid ?? throw new ArgumentNullException(nameof(httpRequestInvalid));
     }
-    public byte[] BuildVersion() => Encoding.UTF8.GetBytes("HTTP / " + (httpRequestInvalid.Version ?? "1.1"));
+    public byte[] BuildVersion() => Encoding.UTF8.GetBytes($"HTTP/{httpRequestInvalid.Version ?? "1.1"} ");
 
-    public byte[] BuildStatus() => Encoding.UTF8.GetBytes($"{(int)httpRequestInvalid.Status} {httpRequestInvalid.Status}");
+    public byte[] BuildStatus() => Encoding.UTF8.GetBytes($"{(int)httpRequestInvalid.Status} {httpRequestInvalid.Status} ");
 
     public byte[] BuildHeaders() => Encoding.UTF8.GetBytes(
         $"\nContent-Type:{httpRequestInvalid.ContentTypeRequest ?? "text/html"};charset=UTF-8;" +

@@ -7,9 +7,9 @@
   internal class HttpRequestInvalid : HttpRequest
   {
 
-    public HttpRequestInvalid(Repository repository,
-    DateTime dateTimeRequest, string ipAddress, string message, long idRequest = -1)
-        : base(repository, dateTimeRequest, null, null, ipAddress, null, message, idRequest)
+    public HttpRequestInvalid(Repository repository, string stringRequest,
+    DateTime dateTimeRequest, string ipAddressClient, string ipAddressServer, string message, long idRequest = -1)
+        : base(repository, stringRequest, dateTimeRequest, null, null, ipAddressClient, ipAddressServer, null, message, idRequest)
     {
       Status = StatusEnum.BAD_REQUEST;
     }

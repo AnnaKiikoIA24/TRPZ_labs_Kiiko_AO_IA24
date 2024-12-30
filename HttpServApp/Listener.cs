@@ -1,6 +1,5 @@
 ﻿using HttpServApp.Mediator;
 using HttpServApp.Models;
-using HttpServApp.Processing;
 using System.Net;
 using System.Net.Sockets;
 
@@ -57,14 +56,22 @@ namespace HttpServApp
           // Очiкуємо спробу з'єднання,
           // пiсля з'єднання створюється новий сокет для його обробки (вхiдне пiдключення)
           Socket responseSocket = listenSocket.Accept();
-          if (responseSocket.Connected)
+          try
           {
-            Console.WriteLine($"\n==== Адреса пiдключеного клiєнта: {responseSocket.RemoteEndPoint}");
-            // Вiдправка сповiщення медiатору про надходження нового запиту вiд клiєнта 
-            Mediator?.Notify(this, responseSocket);
+            if (responseSocket.Connected)
+            {
+              Console.WriteLine($"\n==== Адреса пiдключеного клiєнта: {responseSocket.RemoteEndPoint}");
+              // Вiдправка сповiщення медiатору про надходження нового запиту вiд клiєнта 
+              Mediator?.Notify(this, responseSocket);
+            }
           }
-          else
+          catch (Exception ex)
           {
+            Console.WriteLine($"Помилка обробки запиту від клієнта {responseSocket.RemoteEndPoint}: {ex.Message}");
+          }
+          finally
+          {
+            responseSocket.Shutdown(SocketShutdown.Both);
             responseSocket.Close();
             responseSocket.Dispose();
           }
@@ -76,7 +83,9 @@ namespace HttpServApp
       }
       finally
       {
+        listenSocket.Shutdown(SocketShutdown.Both);
         listenSocket.Close();
+        listenSocket.Dispose();
       }
     }
 

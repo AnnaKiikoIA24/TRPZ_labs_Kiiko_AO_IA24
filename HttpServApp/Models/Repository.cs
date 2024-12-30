@@ -65,7 +65,7 @@ namespace HttpServApp.Models
         cmd.CommandType = System.Data.CommandType.Text;
         cmd.CommandText =
             @"SELECT req.""Id_Request"", req.""DateTime_Request"", req.""Type_Request"", req.""Version""," +
-                @"req.""Method"", req.""Ip_Address"", req.""Status"", req.""Content_Type_Request"", req.""Message""," +
+                @"req.""Method"", req.""Ip_Address_Client"", req.""Ip_Address_Server"", req.""Status"", req.""Content_Type_Request"", req.""Message""," +
                 @"resp.""DateTime_Response"", resp.""Status_Send"", resp.""Content_Length""," +
                 @"page.""Path""," +
                 @"stat.""Date_Beg"", stat.""Date_End"", stat.""Cnt_Rows"", stat.""Key_Authorization""" +
@@ -87,11 +87,12 @@ namespace HttpServApp.Models
             switch ((TypeRequestEnum)Convert.ToInt16(dataReader["Type_Request"]))
             {
               case TypeRequestEnum.СТОРІНКА:
-                request = new HttpRequestPage(this,
+                request = new HttpRequestPage(this, string.Empty,
                     Convert.ToDateTime(dataReader["DateTime_Request"]),
                     dataReader["Version"] != DBNull.Value ? Convert.ToString(dataReader["Version"]) : null,
                     dataReader["Method"] != DBNull.Value ? Convert.ToString(dataReader["Method"]) : null,
-                    Convert.ToString(dataReader["Ip_Address"]),
+                    Convert.ToString(dataReader["Ip_Address_Client"]),
+                    Convert.ToString(dataReader["Ip_Address_Server"]),
                     dataReader["Content_Type_Request"] != DBNull.Value ? Convert.ToString(dataReader["Content_Type_Request"]) : null,
                     dataReader["Path"] != DBNull.Value ? Convert.ToString(dataReader["Path"]) : null,
                     dataReader["Message"] != DBNull.Value ? Convert.ToString(dataReader["Message"]) : null,
@@ -99,11 +100,12 @@ namespace HttpServApp.Models
                 break;
 
               case TypeRequestEnum.СТАТИСТИКА:
-                request = new HttpRequestStat(this,
+                request = new HttpRequestStat(this, string.Empty,
                     Convert.ToDateTime(dataReader["DateTime_Request"]),
                     dataReader["Version"] != DBNull.Value ? Convert.ToString(dataReader["Version"]) : null,
                     dataReader["Method"] != DBNull.Value ? Convert.ToString(dataReader["Method"]) : null,
-                    Convert.ToString(dataReader["Ip_Address"]),
+                    Convert.ToString(dataReader["Ip_Address_Client"]),
+                    Convert.ToString(dataReader["Ip_Address_Server"]),
                     dataReader["Content_Type_Request"] != DBNull.Value ? Convert.ToString(dataReader["Content_Type_Request"]) : null,
                     Convert.ToDateTime(dataReader["Date_Beg"]), Convert.ToDateTime(dataReader["Date_End"]), "",
                     dataReader["Message"] != DBNull.Value ? Convert.ToString(dataReader["Message"]) : null,
@@ -114,11 +116,12 @@ namespace HttpServApp.Models
                 break;
 
               case TypeRequestEnum.НЕ_ВИЗНАЧЕНО:
-                request = new HttpRequest(this,
+                request = new HttpRequest(this, string.Empty,
                     Convert.ToDateTime(dataReader["DateTime_Request"]),
                     dataReader["Version"] != DBNull.Value ? Convert.ToString(dataReader["Version"]) : null,
                     dataReader["Method"] != DBNull.Value ? Convert.ToString(dataReader["Method"]) : null,
-                    Convert.ToString(dataReader["Ip_Address"]),
+                    Convert.ToString(dataReader["Ip_Address_Client"]),
+                    Convert.ToString(dataReader["Ip_Address_Server"]),
                     dataReader["Content_Type_Request"] != DBNull.Value ? Convert.ToString(dataReader["Content_Type_Request"]) : null,
                     dataReader["Message"] != DBNull.Value ? Convert.ToString(dataReader["Message"]) : null,
                     Convert.ToInt64(dataReader["Id_Request"]));
@@ -175,12 +178,13 @@ namespace HttpServApp.Models
         {
           case '+':
             query = @"INSERT INTO public.""Http_Request""(" +
-                @"""DateTime_Request"", ""Version"", ""Method"", ""Ip_Address"", ""Status"", ""Content_Type_Request"", ""Message"", ""Type_Request"")" +
-                @" VALUES ($1, $2, $3, $4, $5, $6, $7, $8)";
+                @"""DateTime_Request"", ""Version"", ""Method"", ""Ip_Address_Client"", ""Ip_Address_Server"",""Status"", ""Content_Type_Request"", ""Message"", ""Type_Request"")" +
+                @" VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)";
             cmd.Parameters.Add(new NpgsqlParameter() { DbType = System.Data.DbType.DateTime, Value = httpRequest.DateTimeRequest });
             cmd.Parameters.Add(new NpgsqlParameter() { DbType = System.Data.DbType.String, Value = httpRequest.Version == null ? DBNull.Value : httpRequest.Version });
             cmd.Parameters.Add(new NpgsqlParameter() { DbType = System.Data.DbType.String, Value = httpRequest.Method == null ? DBNull.Value : httpRequest.Method });
-            cmd.Parameters.Add(new NpgsqlParameter() { DbType = System.Data.DbType.String, Value = httpRequest.IpAddress });
+            cmd.Parameters.Add(new NpgsqlParameter() { DbType = System.Data.DbType.String, Value = httpRequest.IpAddressClient });
+            cmd.Parameters.Add(new NpgsqlParameter() { DbType = System.Data.DbType.String, Value = httpRequest.IpAddressServer });
             cmd.Parameters.Add(new NpgsqlParameter() { DbType = System.Data.DbType.Int32, Value = (int)httpRequest.Status });
             cmd.Parameters.Add(new NpgsqlParameter() { DbType = System.Data.DbType.String, Value = httpRequest.ContentTypeRequest == null ? DBNull.Value : httpRequest.ContentTypeRequest });
             cmd.Parameters.Add(new NpgsqlParameter() { DbType = System.Data.DbType.String, Value = httpRequest.Message == null ? DBNull.Value : httpRequest.Message });
