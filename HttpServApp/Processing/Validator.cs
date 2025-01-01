@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 namespace HttpServApp.Processing
 {
   /// <summary>
-  /// Клас парсингу та валыдацыъ даних Http-запиту 
+  /// Клас парсингу та валідації даних Http-запиту 
   /// </summary>
   internal class Validator
   {

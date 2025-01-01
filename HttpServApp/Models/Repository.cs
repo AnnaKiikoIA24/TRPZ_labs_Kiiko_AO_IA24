@@ -74,7 +74,7 @@ namespace HttpServApp.Models
              @" LEFT OUTER JOIN public.""Http_Request_Page"" page ON req.""Id_Request""=page.""Id_Request""" +
              @" LEFT OUTER JOIN public.""Http_Request_Stat"" stat ON req.""Id_Request""=stat.""Id_Request""" +
              @" WHERE req.""DateTime_Request"" BETWEEN $1 AND $2" +
-             @" ORDER BY req.""Id_Request""";
+             @" ORDER BY req.""DateTime_Request""";
         cmd.Parameters.Add(new NpgsqlParameter() { DbType = System.Data.DbType.DateTime, Value = dateBeg });
         cmd.Parameters.Add(new NpgsqlParameter() { DbType = System.Data.DbType.DateTime, Value = dateEnd });
 
