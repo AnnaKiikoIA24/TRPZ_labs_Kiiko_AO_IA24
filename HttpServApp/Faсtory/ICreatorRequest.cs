@@ -2,10 +2,10 @@
 using HttpServApp.Processing;
 using HttpServApp.State;
 
-namespace HttpServApp.Factory
+namespace HttpServApp.Faсtory
 {
   /// <summary>
-  /// iнтерфейс ICreatorRequest визначає методи 
+  /// Інтерфейс ICreatorRequest визначає методи 
   /// створення об'єкту запиту та його початкового стану
   /// </summary>
   internal interface ICreatorRequest

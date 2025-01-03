@@ -4,7 +4,9 @@ using System.Net.Sockets;
 
 namespace HttpServApp.State
 {
-  // Стан пiсля валiдацiї: невалiдний запит 
+  /// <summary>
+  /// Стан пiсля валiдацiї: невалiдний запит 
+  /// </summary>
   internal class InvalidState : IState
   {
     public void ProcessingHandler(HttpRequest httpRequest, Socket socket)

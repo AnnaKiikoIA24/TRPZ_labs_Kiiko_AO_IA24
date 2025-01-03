@@ -3,7 +3,9 @@ using System.Net.Sockets;
 
 namespace HttpServApp.State
 {
-  // Фiнальний стан об'єкта
+  /// <summary>
+  /// Фiнальний стан об'єкта
+  /// </summary>
   internal class DoneState : IState
   {
     public void ProcessingHandler(HttpRequest httpRequest, Socket socket)

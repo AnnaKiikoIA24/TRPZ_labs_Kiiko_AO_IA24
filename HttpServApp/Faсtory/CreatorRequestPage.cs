@@ -3,24 +3,22 @@ using HttpServApp.State;
 using HttpServApp.Processing;
 using System.Net;
 
-namespace HttpServApp.Factory
+namespace HttpServApp.Faсtory
 {
+  /// <summary>
+  /// Клас CreatorRequestPage реалізує інтерфейс ICreatorRequest для створення 
+  /// об'єкту класу HttpRequestPage (запит Web-сторiнки) та його початкового стану ValidatePageState
+  /// </summary>
   internal class CreatorRequestPage : ICreatorRequest
   {
-    /// <summary>
-    /// Повертає об'єкт запиту Web-сторiнки
-    /// </summary>
-    /// <param name="validator"></param>
-    /// <param name="repository"></param>
-    /// <returns></returns>
     public (HttpRequest, IState) FactoryMethod(Validator validator, Repository repository)
     {
       try
       {
         HttpRequestPage httpRequest = new HttpRequestPage(
-            repository, DateTime.Now,
+            repository, validator.GetStringRequest(), DateTime.Now,
             validator.GetVersionRequest(), validator.GetMethodRequest(),
-            validator.GetRemoteEndPoint(), validator.GetContentTypeRequest(),
+            validator.RemoteEndPoint, validator.LocalEndPoint, validator.GetContentTypeRequest(),
             validator.GetFileRequest());
 
         Console.WriteLine($"Processing: запит сторiнки {httpRequest.Path}!");
@@ -30,20 +28,20 @@ namespace HttpServApp.Factory
       catch (WebException webE)
       {
         HttpRequestInvalid httpRequest = new HttpRequestInvalid(
-          repository, DateTime.Now,
-          validator.GetRemoteEndPoint(), $"{webE.Message} статус={webE.Status}");
-        Console.WriteLine($"CreatorRequestPage WebException: {webE.Message} статус={webE.Status}");
+          repository, validator.GetStringRequest(), DateTime.Now,
+          validator.RemoteEndPoint, validator.LocalEndPoint, $"{webE.Message}");
+        Console.WriteLine($"CreatorRequestPage WebException: {webE.Message}");
         return (httpRequest, new InvalidState());
       }
       catch (Exception exc)
       {
         HttpRequestInvalid httpRequest = new HttpRequestInvalid(
-          repository, DateTime.Now,
-          validator.GetRemoteEndPoint(), exc.Message);
+          repository, validator.GetStringRequest(), DateTime.Now,
+          validator.RemoteEndPoint, validator.LocalEndPoint, exc.Message);
         Console.WriteLine($"CreatorRequestPage Exception: {exc.Message}");
         return (httpRequest, new InvalidState());
       }
     }
-    
+
   }
 }

@@ -29,7 +29,7 @@ namespace HttpServApp.Builder
       }
     }
 
-    public byte[] BuildVersion() => Encoding.UTF8.GetBytes("HTTP / " + (httpRequestStat.Version ?? "1.1"));
+    public byte[] BuildVersion() => Encoding.UTF8.GetBytes($"HTTP/{httpRequestStat.Version ?? "1.1"} ");
     public byte[] BuildStatus()
     {
       // Якщо periodRequests не визначено (сталась помилка при виборi даних), то STATUS = BAD_SERVER
@@ -52,14 +52,14 @@ namespace HttpServApp.Builder
           httpRequestStat.Status = StatusEnum.NOT_FOUND;
           httpRequestStat.Message =
             $"Данi статистики за перiод " +
-            $"<b>з {httpRequestStat.DateBeg:dd.MM.yyyy HH:mm} по {httpRequestStat.DateEnd:dd.MM.yyyy HH:mm} ВiДСУТНi</b>";
+            $"<b>з {httpRequestStat.DateBeg:dd.MM.yyyy HH:mm} по {httpRequestStat.DateEnd:dd.MM.yyyy HH:mm} ВIДСУТНI</b>";
         }
         else
           // Якщо знайденi => STATUS = OK
           httpRequestStat.Status = StatusEnum.OK;
       }
 
-      return Encoding.UTF8.GetBytes($"{(int)httpRequestStat.Status} {httpRequestStat.Status}");
+      return Encoding.UTF8.GetBytes($"{(int)httpRequestStat.Status} {httpRequestStat.Status} ");
     }
 
     public byte[] BuildHeaders() => Encoding.UTF8.GetBytes(
@@ -99,7 +99,8 @@ namespace HttpServApp.Builder
                         $"\t\t\t\t\t<th scope=\"row\" >{indexRow++}</th>\n" +
                         $"\t\t\t\t\t<td scope=\"col\">{req.DateTimeRequest:dd.MM.yyyy HH:mm:ss}</td>\n" +
                         $"\t\t\t\t\t<td scope=\"col\">{req.TypeRequest}</td>\n" +
-                        $"\t\t\t\t\t<td scope=\"col\">{req.IpAddress}</td>\n" +
+                        $"\t\t\t\t\t<td scope=\"col\">{req.IpAddressServer}</td>\n" +
+                        $"\t\t\t\t\t<td scope=\"col\">{req.IpAddressClient}</td>\n" +
                         $"\t\t\t\t\t<th scope=\"col\" " +
                             $"{(req.Status != StatusEnum.OK && req.TypeRequest != TypeRequestEnum.НЕ_ВИЗНАЧЕНО ? " class=\"text-warning\"" : string.Empty)}>" +
                               $"{req.Status}" +
@@ -165,13 +166,14 @@ namespace HttpServApp.Builder
         "\t<body>\n" +
             "\t<div class=\"container-fluid mt-2\">\n" +
             $"\t\t<p class=\"text-center fw-weight-bold\">{header}</p>\n" +
-            "\t\t<table class=\"table\">\n" +
+            "\t\t<table class=\"table table-striped\">\n" +
                 "\t\t\t<thead>\n" +
                     "\t\t\t\t<tr>\n" +
                         "\t\t\t\t\t<th scope=\"col\" >#</th>\n" +
                         "\t\t\t\t\t<th scope=\"col\">Дата/час</th>\n" +
                         "\t\t\t\t\t<th scope=\"col\">Тип</th>\n" +
-                        "\t\t\t\t\t<th scope=\"col\">IP-адреса</th>\n" +
+                        "\t\t\t\t\t<th scope=\"col\">Адреса сервера</th>\n" +
+                        "\t\t\t\t\t<th scope=\"col\">Адреса клієнта</th>\n" +
                         "\t\t\t\t\t<th scope=\"col\">Статус запиту</th>\n" +
                         "\t\t\t\t\t<th scope=\"col\">Статус вiдпр. вiдп.</th>\n" +
                         "\t\t\t\t\t<th scope=\"col\">Тип контенту</th>\n" +

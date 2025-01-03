@@ -17,7 +17,7 @@
     public override bool IsComposite() => false;
 
     /// <summary>
-    /// Метод пошуку файлу
+    /// Метод пошуку файлу у дочiрнiх об'єктах
     /// </summary>
     /// <param name="resourceName"></param>
     /// <returns></returns>

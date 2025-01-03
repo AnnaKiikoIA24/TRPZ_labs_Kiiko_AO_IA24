@@ -4,7 +4,9 @@ using System.Net.Sockets;
 
 namespace HttpServApp.State
 {
-  // Стан пiсля вiдправки даних клiєнту: необхiдно зберегти iнформацiю про запит в БД
+  /// <summary>
+  /// Стан пiсля вiдправки даних клiєнту: необхiдно зберегти iнформацiю про запит в БД
+  /// </summary>
   internal class SendedState : IState
   {
     public void ProcessingHandler(HttpRequest httpRequest, Socket socket)

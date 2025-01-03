@@ -7,12 +7,12 @@ namespace HttpServApp.Models
   {
     PROCESSING = 0,
     OK = 200,
+    REDIRECT = 308,
     BAD_REQUEST = 400,
     UNAUTHORIZED = 401,
     NOT_FOUND = 404,
     NOT_ALLOWED = 405,
-    BAD_SERVER = 500,
-    STATISTIC = 600
+    BAD_SERVER = 500
   }
 
   public enum TypeRequestEnum
@@ -21,47 +21,57 @@ namespace HttpServApp.Models
     СТОРІНКА = 1,
     СТАТИСТИКА = 2
   }
+
   /// <summary>
   /// Базовий клас, що описує запит до серверу
   /// </summary>    
   internal class HttpRequest
   {
-
-    // Посилання на поточний стан об'єкта.
+    // Посилання на поточний стан об'єкта
     private IState? state = null;
-
     // Посилання на репозиторiй, де зберiгається об'єкт
     public Repository Repository { get; }
-
+    // Строка запиту
+    public string StringRequest { get; }
+    // Ідентифікатор запиту
     public long IdRequest { get; set; } = -1;
+    // Дата/час запиту
     public DateTime DateTimeRequest { get; } = DateTime.Now;
-
+    // Тип запиту: СТОРІНКА / СТАТИСТИКА
     public TypeRequestEnum TypeRequest { get; set; } = TypeRequestEnum.НЕ_ВИЗНАЧЕНО;
+    // Версія протоколу HTTP
     public string? Version { get; }
+    // Метод запиту
     public string? Method { get; }
-    public string IpAddress { get; } = string.Empty;
+    // IP-адреса клієнта
+    public string IpAddressClient { get; } = string.Empty;
 
-    // Http-статус вiдповiдi, початково статус запиту iнiцiалiзується значенням PROCESSING,
+    // IP-адреса сервера
+    public string IpAddressServer { get; } = string.Empty;
+
+    // Http-статус обробки запиту, початково статус запиту iнiцiалiзується значенням PROCESSING:
     // вiдповiдь не сформована i не вiдправлена
     public StatusEnum Status { get; set; } = StatusEnum.PROCESSING;
     public string? StatusStr { get => Status.ToString(); }
-
+    // Тип змісту запиту
     public string? ContentTypeRequest { get; }
-
+    // Повідомлення про помилку, якщо статус запиту не дорівнює StatusEnum.OK
     public string? Message { get; set; }
+    // Об'єкт відповіді
     public HttpResponse? Response { get; set; }
 
-
-    public HttpRequest(Repository repository,
+    public HttpRequest(Repository repository, string stringRequest, 
         DateTime dateTimeRequest,
-        string? version, string? method, string ipAddress,
+        string? version, string? method, string ipAddressClient, string ipAddressServer,
         string? contentType, string? message = "", long idRequest = -1)
     {
       // Заповнили всi поля
+      StringRequest = stringRequest;
       DateTimeRequest = dateTimeRequest;
       Version = version;
       Method = method;
-      IpAddress = ipAddress;
+      IpAddressClient = ipAddressClient;
+      IpAddressServer = ipAddressServer;
       ContentTypeRequest = contentType;
       Message = message;
       IdRequest = idRequest;
@@ -77,7 +87,7 @@ namespace HttpServApp.Models
       {
         if (socket != null)
         {
-            socket.Send(data);
+          socket.Send(data);
           // Встановлюємо ознаку вiдправленої вiдповiдi 
           Response.StatusSend = 1;
         }
@@ -89,11 +99,6 @@ namespace HttpServApp.Models
       catch (Exception exc)
       {
         Console.WriteLine($"Сформована вiдповiдь не вiдправлена: {exc.Message}");
-      }
-      finally
-      {
-        socket?.Shutdown(SocketShutdown.Both);
-        socket?.Close();
       }
     }
 

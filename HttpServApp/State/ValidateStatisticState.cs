@@ -4,7 +4,9 @@ using System.Net.Sockets;
 
 namespace HttpServApp.State
 {
-  // Стан пiсля валiдацiї: валiдний запит статистичних даних
+  /// <summary>
+  /// Стан пiсля валiдацiї: валiдний запит статистичних даних
+  /// </summary>
   internal class ValidateStatisticState : IState
   {
     public void ProcessingHandler(HttpRequest httpRequest, Socket socket)

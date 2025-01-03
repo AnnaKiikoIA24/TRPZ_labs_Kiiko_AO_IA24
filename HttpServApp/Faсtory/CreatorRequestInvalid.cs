@@ -2,21 +2,19 @@
 using HttpServApp.Processing;
 using HttpServApp.State;
 
-namespace HttpServApp.Factory
+namespace HttpServApp.Faсtory
 {
+  /// <summary>
+  /// Клас CreatorRequestInvalid реалізує інтерфейс ICreatorRequest для створення 
+  /// об'єкту класу HttpRequestInvalid та його початкового стану InvalidState
+  /// </summary>
   internal class CreatorRequestInvalid : ICreatorRequest
   {
-    /// <summary>
-    /// Повертає об'єкт не валiдного запиту 
-    /// </summary>
-    /// <param name="validator"></param>
-    /// <param name="repository"></param>
-    /// <returns></returns>
     public (HttpRequest, IState) FactoryMethod(Validator validator, Repository repository)
     {
       HttpRequestInvalid httpRequest = new HttpRequestInvalid(
-        repository, DateTime.Now,
-        validator.GetRemoteEndPoint(), "Невизначений тип запиту.");
+        repository, validator.GetStringRequest(), DateTime.Now,
+        validator.RemoteEndPoint, validator.LocalEndPoint, "Невизначений тип запиту.");
       Console.WriteLine("Processing: Невизначений тип запиту!");
 
       return (httpRequest, new InvalidState());

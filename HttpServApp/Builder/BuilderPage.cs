@@ -1,9 +1,7 @@
 ﻿using HttpServApp.Composite;
 using HttpServApp.Models;
 using HttpServApp.Processing;
-using System.Globalization;
 using System.Text;
-using System.Text.RegularExpressions;
 
 namespace HttpServApp.Builder
 {
@@ -18,7 +16,7 @@ namespace HttpServApp.Builder
       httpRequestPage = httpRequest as HttpRequestPage ?? throw new ArgumentNullException(nameof(httpRequestPage));
     }
 
-    public byte[] BuildVersion() => Encoding.UTF8.GetBytes("HTTP / " + (httpRequestPage.Version ?? "1.1"));
+    public byte[] BuildVersion() => Encoding.UTF8.GetBytes($"HTTP/{httpRequestPage.Version ?? "1.1"} ");
     public byte[] BuildStatus()
     {
       // Якщо задано просто шлях до сторiнки: шлях не мiстить символу "*"
@@ -57,7 +55,7 @@ namespace HttpServApp.Builder
           httpRequestPage.Status = StatusEnum.NOT_FOUND;
           httpRequestPage.Message =
             $"Папка <b>'{folderPath}'</b> не знайдена на серверi";
-          return Encoding.UTF8.GetBytes($"{(int)httpRequestPage.Status} {httpRequestPage.Status}");
+          return Encoding.UTF8.GetBytes($"{(int)httpRequestPage.Status} {httpRequestPage.Status} ");
         }
 
         // Формуємо iм'я файлу: частина строки вiд символу "*" до кiнця
@@ -105,7 +103,16 @@ namespace HttpServApp.Builder
         }
       }
 
-      return Encoding.UTF8.GetBytes($"{(int)httpRequestPage.Status} {httpRequestPage.Status}");
+      // Якщо статус обробки запиту сторінки StatusEnum.NOT_FOUND
+      // і заданий резервний віддалений сервер, передаємо запит серверу (модель взаємодії peer-to-peer)
+      if (httpRequestPage.Status == StatusEnum.NOT_FOUND &&
+        !string.IsNullOrEmpty(Configuration.RemoteHost))
+      {
+        httpRequestPage.Status = StatusEnum.REDIRECT;
+        httpRequestPage.Message += $"<br/>Запит перенаправляється на резервний сервер: {Configuration.RemoteHost}:{Configuration.RemotePort}";
+      }
+      
+      return Encoding.UTF8.GetBytes($"{(int)httpRequestPage.Status} {httpRequestPage.Status} ");
     }
 
     public byte[] BuildHeaders() => Encoding.UTF8.GetBytes(

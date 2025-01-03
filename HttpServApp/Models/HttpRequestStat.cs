@@ -11,12 +11,14 @@
     public int CntRows { get; set; } = 0;
     public string? KeyAuthorization { get; }
 
-    public HttpRequestStat(Repository repository,
+    public HttpRequestStat(Repository repository, string stringRequest,
         DateTime dateTimeRequest,
         string version, string method,
-        string ipAddress, string contentType,
+        string ipAddressClient, string ipAddressServer, string contentType,
         DateTime dateBeg, DateTime dateEnd, string? keyAuthorization, string? message = null, long idRequest = -1)
-        : base(repository, dateTimeRequest, version, method, ipAddress, contentType, message, idRequest)
+
+        : base(repository, stringRequest, dateTimeRequest, version, method, 
+            ipAddressClient, ipAddressServer, contentType, message, idRequest)
     {
       DateBeg = dateBeg;
       DateEnd = dateEnd;
