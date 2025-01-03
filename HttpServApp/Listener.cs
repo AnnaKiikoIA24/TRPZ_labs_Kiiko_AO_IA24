@@ -5,6 +5,9 @@ using System.Net.Sockets;
 
 namespace HttpServApp
 {
+  /// <summary>
+  /// Клас прослуховування вхідних запитів до сервера
+  /// </summary>
   internal class Listener
   {
     // Ознака запуску потока прослуховування вхiдних пiдключень
